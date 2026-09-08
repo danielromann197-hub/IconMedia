@@ -5,7 +5,7 @@ const searchInput = document.getElementById('searchInput');
 
 if (searchButton && searchDialog) {
   searchButton.addEventListener('click', () => {
-    searchDialog.showModal();
+    if (typeof searchDialog.showModal === 'function') searchDialog.showModal();
     setTimeout(() => searchInput?.focus(), 50);
   });
 }
@@ -23,16 +23,20 @@ if (newsletterForm) {
 }
 
 const ticker = document.getElementById('ticker');
-if (ticker && window.matchMedia('(max-width: 650px)').matches) {
+if (ticker) {
   let offset = 0;
   setInterval(() => {
-    offset -= 0.55;
-    ticker.style.transform = `translateX(${offset}px)`;
-    if (Math.abs(offset) > ticker.scrollWidth / 2) offset = 0;
+    if (window.innerWidth <= 650) {
+      offset -= 0.55;
+      ticker.style.transform = `translateX(${offset}px)`;
+      if (Math.abs(offset) > Math.max(500, ticker.scrollWidth / 2)) offset = 0;
+    }
   }, 40);
 }
 
 const cards = document.querySelectorAll('.story, .trend-compact>a');
-cards.forEach((card, index) => {
-  card.style.animationDelay = `${index * 45}ms`;
-});
+cards.forEach((card, index) => { card.style.animationDelay = `${index * 45}ms`; });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
