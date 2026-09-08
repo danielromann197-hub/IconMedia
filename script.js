@@ -61,6 +61,16 @@ window.addEventListener('appinstalled', () => {
   document.querySelector('.install-app')?.remove();
 });
 
+// Force the reliable vector logo asset and refresh favicon references.
+const logoImg = document.querySelector('.brand-logo-button img');
+if (logoImg) {
+  logoImg.src = './icon.svg?v=5';
+  logoImg.removeAttribute('srcset');
+}
+document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]').forEach((link) => {
+  link.href = './icon.svg?v=5';
+});
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
