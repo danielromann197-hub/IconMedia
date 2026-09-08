@@ -1,23 +1,38 @@
 const searchButton = document.getElementById('searchButton');
 const searchDialog = document.getElementById('searchDialog');
 const newsletterForm = document.getElementById('newsletterForm');
+const searchInput = document.getElementById('searchInput');
 
-searchButton.addEventListener('click', () => searchDialog.showModal());
+if (searchButton && searchDialog) {
+  searchButton.addEventListener('click', () => {
+    searchDialog.showModal();
+    setTimeout(() => searchInput?.focus(), 50);
+  });
+}
 
-newsletterForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const button = newsletterForm.querySelector('button');
-  button.textContent = 'Listo. Estás dentro ✨';
-  button.disabled = true;
-  newsletterForm.querySelector('input').value = '';
-});
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const button = newsletterForm.querySelector('button');
+    const input = newsletterForm.querySelector('input');
+    button.textContent = '✓';
+    button.disabled = true;
+    input.value = '';
+    input.placeholder = '¡Ya estás dentro!';
+  });
+}
 
 const ticker = document.getElementById('ticker');
-let tickerOffset = 0;
-setInterval(() => {
-  if (window.innerWidth < 700) {
-    tickerOffset -= 1;
-    ticker.style.transform = `translateX(${tickerOffset}px)`;
-    if (Math.abs(tickerOffset) > 900) tickerOffset = 0;
-  }
-}, 40);
+if (ticker && window.matchMedia('(max-width: 650px)').matches) {
+  let offset = 0;
+  setInterval(() => {
+    offset -= 0.55;
+    ticker.style.transform = `translateX(${offset}px)`;
+    if (Math.abs(offset) > ticker.scrollWidth / 2) offset = 0;
+  }, 40);
+}
+
+const cards = document.querySelectorAll('.story, .trend-compact>a');
+cards.forEach((card, index) => {
+  card.style.animationDelay = `${index * 45}ms`;
+});
