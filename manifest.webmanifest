@@ -10,5 +10,12 @@
   "background_color": "#f7f7f5",
   "theme_color": "#000000",
   "categories": ["news", "entertainment"],
-  "icons": [{"src":"icon-logo.webp?v=4","sizes":"256x256","type":"image/webp","purpose":"any maskable"}]
+  "icons": [
+    {
+      "src": "Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=5",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
