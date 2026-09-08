@@ -37,6 +37,30 @@ if (ticker) {
 const cards = document.querySelectorAll('.story, .trend-compact>a');
 cards.forEach((card, index) => { card.style.animationDelay = `${index * 45}ms`; });
 
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  if (document.querySelector('.install-app')) return;
+  const banner = document.createElement('div');
+  banner.className = 'install-app';
+  banner.innerHTML = '<div><strong>Instala ICON MEDIA</strong><small>Ten las noticias siempre a la mano.</small></div><button type="button" class="install-action">Instalar</button><button type="button" class="dismiss" aria-label="Cerrar">×</button>';
+  document.body.appendChild(banner);
+  banner.querySelector('.install-action').addEventListener('click', async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    banner.remove();
+  });
+  banner.querySelector('.dismiss').addEventListener('click', () => banner.remove());
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  document.querySelector('.install-app')?.remove();
+});
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
