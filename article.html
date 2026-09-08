@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ICON MEDIA — Noticias, cultura pop, música, entretenimiento e internet." />
+  <title>ICON MEDIA — Noticia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .article-page{padding:70px 0 110px}.article-top{max-width:920px}.article-top h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,7vw,92px);line-height:.92;letter-spacing:-.07em;margin:20px 0 28px}.article-deck{font-size:20px;color:#666;max-width:700px;margin-bottom:25px}.article-meta{display:flex;gap:10px;align-items:center;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.article-hero{height:min(68vw,680px);min-height:380px;margin:50px 0;border-radius:var(--radius);background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45)),url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=90') center/cover}.article-layout{display:grid;grid-template-columns:180px minmax(0,680px);gap:60px;margin:auto;max-width:920px}.article-share{display:flex;flex-direction:column;gap:10px}.article-share span{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#777;margin-bottom:5px}.share-button{border:1px solid #ccc;background:#fff;border-radius:999px;padding:10px 14px;font-size:10px;font-weight:800;cursor:pointer}.article-body{font-size:18px;line-height:1.7}.article-body p{margin-bottom:26px}.article-body h2{font-family:'Space Grotesk';font-size:36px;line-height:1;letter-spacing:-.05em;margin:48px 0 18px}.reaction-row{display:flex;flex-wrap:wrap;gap:8px;margin:45px 0 15px;padding-top:25px;border-top:1px solid var(--ink)}.reaction{border:1px solid #ccc;background:#fff;border-radius:999px;padding:10px 14px;font-size:11px;font-weight:700;cursor:pointer}.reaction:hover{border-color:#111;background:var(--yellow)}.back-link{display:inline-flex;margin-top:28px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.article-header{border-bottom:1px solid var(--ink)}
+    @media(max-width:700px){.article-page{padding-top:42px}.article-hero{margin:34px 0 42px}.article-layout{grid-template-columns:1fr;gap:25px}.article-share{flex-direction:row;align-items:center}.article-share span{margin:0 4px 0 0}.article-body{font-size:17px}.article-body h2{font-size:30px}}
+  </style>
+</head>
+<body>
+  <div class="announcement"><span class="live-dot"></span> ICON NOW · LO QUE ESTÁ PASANDO AHORA</div>
+  <header class="site-header article-header">
+    <a class="brand" href="index.html" aria-label="ICON Media">ICON<span>.</span></a>
+    <nav class="desktop-nav" aria-label="Principal">
+      <a href="index.html#latest">Lo último</a><a href="index.html#trending">Trending</a><a href="index.html#categories">Categorías</a>
+    </nav>
+    <a class="search-button" href="index.html" aria-label="Volver">←</a>
+  </header>
+
+  <main class="article-page container">
+    <div class="article-top">
+      <span class="eyebrow accent">VIRAL · ICON MEDIA</span>
+      <h1>Internet tiene una nueva obsesión 👀</h1>
+      <p class="article-deck">Las historias, personas y momentos que están dominando la conversación. Esto es lo que sabemos hasta ahora.</p>
+      <div class="article-meta"><span>ICON MEDIA</span><span>·</span><span>7 SEPT 2026</span><span>·</span><span>4 MIN DE LECTURA</span></div>
+    </div>
+
+    <div class="article-hero" role="img" aria-label="Imagen principal de la noticia"></div>
+
+    <div class="article-layout">
+      <aside class="article-share"><span>COMPARTIR</span><button class="share-button" type="button">X</button><button class="share-button" type="button">FB</button><button class="share-button" type="button">LINK</button></aside>
+      <article class="article-body">
+        <p>Hay momentos que aparecen en tu feed una vez y, de repente, están absolutamente en todas partes. Una publicación, un video o una frase se convierte en conversación colectiva antes de que alguien alcance a explicar cómo pasó.</p>
+        <p>Ese es exactamente el tipo de historia que seguimos en ICON: lo que está pasando ahora, contado sin vueltas y con el contexto suficiente para entender por qué todo el mundo está hablando de ello.</p>
+        <h2>¿Por qué todo el mundo está hablando de esto?</h2>
+        <p>La conversación empezó a crecer en redes y rápidamente saltó entre plataformas. Los comentarios, teorías y reacciones hicieron que el tema dejara de ser una publicación más para convertirse en uno de los momentos del día.</p>
+        <p>Por ahora, hay muchas preguntas y pocas respuestas definitivas. Y sí: internet ya tiene sus propias teorías.</p>
+        <div class="reaction-row" aria-label="Reacciones"><button class="reaction">😂 JAJA</button><button class="reaction">👀 ¿QUÉ?</button><button class="reaction">🔥 ICONIC</button><button class="reaction">💀 NO PUEDE SER</button></div>
+        <a class="back-link" href="index.html">← Volver a ICON</a>
+      </article>
+    </div>
+  </main>
+  <footer class="footer container"><div class="footer-brand">ICON<span>.</span></div><p>Lo que está pasando.</p><div class="footer-links"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Contacto</a></div><small>© 2026 ICON MEDIA</small></footer>
+</body>
+</html>
