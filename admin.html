@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <title>Redacción — ICON MEDIA</title>
+  <link rel="icon" href="Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=9" type="image/png" />
+  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="admin.css?v=1" />
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a class="admin-brand" href="index.html"><img src="Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=9" alt="ICON MEDIA"></a>
+    <div><span class="admin-kicker">ICON MEDIA</span><h1>Redacción</h1></div>
+    <a class="admin-back" href="index.html">Ver sitio ↗</a>
+  </header>
+
+  <main class="admin-shell">
+    <section class="admin-intro">
+      <span class="eyebrow accent">CENTRO EDITORIAL</span>
+      <h2>Publica una historia.<br><strong>Hazla importar.</strong></h2>
+      <p>Crea una noticia con la estructura editorial de ICON. Puedes guardarla como borrador, verla antes de publicar y exportar el contenido listo para incorporarlo al sitio.</p>
+    </section>
+
+    <div class="admin-grid">
+      <form id="storyForm" class="editor-card">
+        <div class="card-top"><strong>Nueva noticia</strong><span id="saveStatus">Sin guardar</span></div>
+        <label>Titular<input id="title" maxlength="120" required placeholder="Ej. La canción que internet no puede dejar de escuchar"></label>
+        <label>Bajada<textarea id="deck" maxlength="220" rows="3" required placeholder="Explica en una o dos frases por qué esta historia importa."></textarea></label>
+        <div class="form-row">
+          <label>Categoría<select id="category"><option>Famosos</option><option>Música</option><option>Viral</option><option>Series</option><option>Tendencias</option><option>Internet</option></select></label>
+          <label>Autor<input id="author" value="Redacción ICON" required></label>
+        </div>
+        <div class="form-row">
+          <label>Fecha<input id="date" type="date" required></label>
+          <label>Tiempo de lectura<select id="reading"><option>2 min de lectura</option><option>3 min de lectura</option><option>4 min de lectura</option><option>5 min de lectura</option><option>7 min de lectura</option></select></label>
+        </div>
+        <label>Imagen principal (URL)<input id="image" type="url" placeholder="https://..."><small>En esta versión el archivo de imagen se aloja aparte; después podemos conectar un almacenamiento.</small></label>
+        <label>Contenido<textarea id="body" rows="14" required placeholder="Escribe la nota. Separa los párrafos con una línea en blanco."></textarea></label>
+        <label class="check"><input id="featured" type="checkbox"> Marcar como noticia principal</label>
+        <div class="editor-actions"><button type="submit" class="btn-primary">Guardar borrador</button><button type="button" id="previewBtn" class="btn-secondary">Vista previa</button><button type="button" id="clearBtn" class="btn-ghost">Limpiar</button></div>
+      </form>
+
+      <aside class="preview-card">
+        <div class="card-top"><strong>Vista previa</strong><span>EN TIEMPO REAL</span></div>
+        <div id="previewImage" class="preview-image"><span>IMAGEN</span></div>
+        <div class="preview-content"><span id="previewCategory" class="preview-category">VIRAL</span><h3 id="previewTitle">Tu titular aparecerá aquí</h3><p id="previewDeck">La bajada de tu noticia aparecerá aquí.</p><div class="preview-meta"><span id="previewAuthor">REDACCIÓN ICON</span><span>·</span><span id="previewDate">HOY</span></div></div>
+      </aside>
+    </div>
+
+    <section class="drafts-section">
+      <div class="section-head"><h2>Borradores</h2><button id="exportBtn" class="btn-secondary">Exportar JSON</button></div>
+      <div id="draftList" class="draft-list"><p class="empty-state">Todavía no hay borradores guardados en este navegador.</p></div>
+    </section>
+
+    <div id="toast" class="admin-toast" role="status"></div>
+  </main>
+  <script src="admin.js?v=1"></script>
+</body>
+</html>
