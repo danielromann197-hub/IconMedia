@@ -3,50 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
   <meta name="description" content="ICON MEDIA — Noticias, cultura pop, música, entretenimiento e internet." />
-  <title>ICON MEDIA — Noticia</title>
+  <link rel="icon" href="Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=8" type="image/png" />
+  <title>Internet tiene una nueva obsesión 👀 — ICON MEDIA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=6" />
   <style>
-    .article-page{padding:70px 0 110px}.article-top{max-width:920px}.article-top h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,7vw,92px);line-height:.92;letter-spacing:-.07em;margin:20px 0 28px}.article-deck{font-size:20px;color:#666;max-width:700px;margin-bottom:25px}.article-meta{display:flex;gap:10px;align-items:center;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.article-hero{height:min(68vw,680px);min-height:380px;margin:50px 0;border-radius:var(--radius);background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45)),url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=90') center/cover}.article-layout{display:grid;grid-template-columns:180px minmax(0,680px);gap:60px;margin:auto;max-width:920px}.article-share{display:flex;flex-direction:column;gap:10px}.article-share span{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#777;margin-bottom:5px}.share-button{border:1px solid #ccc;background:#fff;border-radius:999px;padding:10px 14px;font-size:10px;font-weight:800;cursor:pointer}.article-body{font-size:18px;line-height:1.7}.article-body p{margin-bottom:26px}.article-body h2{font-family:'Space Grotesk';font-size:36px;line-height:1;letter-spacing:-.05em;margin:48px 0 18px}.reaction-row{display:flex;flex-wrap:wrap;gap:8px;margin:45px 0 15px;padding-top:25px;border-top:1px solid var(--ink)}.reaction{border:1px solid #ccc;background:#fff;border-radius:999px;padding:10px 14px;font-size:11px;font-weight:700;cursor:pointer}.reaction:hover{border-color:#111;background:var(--yellow)}.back-link{display:inline-flex;margin-top:28px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.article-header{border-bottom:1px solid var(--ink)}
-    @media(max-width:700px){.article-page{padding-top:42px}.article-hero{margin:34px 0 42px}.article-layout{grid-template-columns:1fr;gap:25px}.article-share{flex-direction:row;align-items:center}.article-share span{margin:0 4px 0 0}.article-body{font-size:17px}.article-body h2{font-size:30px}}
+    .article-header{border-bottom:1px solid #ddd;height:88px}.article-header .brand-logo-button{width:62px;height:62px;display:grid;place-items:center;border-radius:50%;overflow:hidden;background:#000;flex:none}.article-header .brand-logo-button img{width:100%;height:100%;object-fit:cover;display:block}.article-page{padding:62px 0 100px}.article-top{max-width:900px;margin:0 auto}.article-breadcrumb{display:flex;align-items:center;gap:9px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#777}.article-breadcrumb strong{color:#000}.article-top h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,7vw,92px);line-height:.91;letter-spacing:-.075em;margin:18px 0 22px;max-width:920px}.article-deck{font-size:21px;line-height:1.35;color:#555;max-width:760px;margin:0 0 26px}.article-meta-row{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;padding:15px 0}.article-author{display:flex;align-items:center;gap:10px}.author-avatar{width:36px;height:36px;border-radius:50%;background:#000;color:#fff;display:grid;place-items:center;font-family:'Space Grotesk';font-size:11px;font-weight:700}.author-name{font-size:10px;font-weight:800}.author-name small{display:block;color:#888;font-size:8px;margin-top:3px;font-weight:700}.article-meta{display:flex;gap:8px;align-items:center;font-size:9px;font-weight:800;color:#777;text-transform:uppercase;letter-spacing:.07em}.article-hero{height:min(58vw,650px);min-height:360px;margin:42px 0 58px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.38)),url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=90') center/cover}.article-caption{font-size:8px;color:#888;margin-top:-48px;margin-bottom:48px}.article-layout{display:grid;grid-template-columns:170px minmax(0,680px);gap:55px;margin:auto;max-width:905px}.article-share{display:flex;flex-direction:column;gap:8px}.article-share>span{font-size:8px;font-weight:800;color:#888;letter-spacing:.1em;margin-bottom:3px}.share-button{border:1px solid #ccc;background:#fff;border-radius:999px;padding:9px 13px;font-size:9px;font-weight:800;cursor:pointer}.share-button:hover{background:#000;color:#fff}.article-body{font-size:18px;line-height:1.72;color:#181818}.article-body p{margin:0 0 25px}.article-body .lead{font-size:22px;line-height:1.5;font-weight:600}.article-body h2{font-family:'Space Grotesk';font-size:36px;line-height:1;letter-spacing:-.055em;margin:52px 0 18px}.article-note{background:#f4f4f1;border-left:5px solid #dfff00;padding:18px 20px;margin:35px 0;font-size:13px;line-height:1.5}.reaction-row{display:flex;flex-wrap:wrap;gap:8px;margin:48px 0 15px;padding-top:26px;border-top:1px solid #111}.reaction{border:1px solid #ccc;background:#fff;border-radius:999px;padding:10px 14px;font-size:10px;font-weight:800;cursor:pointer}.reaction:hover{background:#dfff00;border-color:#dfff00}.article-more{max-width:905px;margin:70px auto 0;padding-top:30px;border-top:1px solid #111}.article-more h2{font-family:'Space Grotesk';font-size:34px;letter-spacing:-.05em;margin:0 0 20px}.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.related-card{display:block}.related-image{height:170px;border-radius:11px;background-size:cover;background-position:center;margin-bottom:10px}.related-card span{font-size:8px;font-weight:800;letter-spacing:.08em;color:#777}.related-card h3{font-family:'Space Grotesk';font-size:18px;line-height:1.05;letter-spacing:-.04em;margin:6px 0}.related-1{background-image:url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85')}.related-2{background-image:url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=700&q=85')}.related-3{background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=700&q=85')}.back-link{display:inline-flex;margin-top:32px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.article-footer{margin-top:80px}
+    @media(max-width:700px){.article-header{height:78px}.article-header .brand-logo-button{width:54px;height:54px}.article-page{padding-top:40px}.article-top h1{font-size:clamp(45px,13vw,64px)}.article-deck{font-size:17px}.article-meta-row{align-items:flex-start;flex-direction:column}.article-meta{flex-wrap:wrap}.article-hero{margin:32px 0 52px;min-height:330px}.article-caption{margin-top:-40px}.article-layout{grid-template-columns:1fr;gap:25px}.article-share{flex-direction:row;align-items:center;flex-wrap:wrap}.article-share>span{margin-right:5px}.article-body{font-size:17px}.article-body .lead{font-size:19px}.article-body h2{font-size:30px}.related-grid{grid-template-columns:1fr}.related-image{height:250px}}
   </style>
 </head>
 <body>
-  <div class="announcement"><span class="live-dot"></span> ICON NOW · LO QUE ESTÁ PASANDO AHORA</div>
+  <div class="announcement"><span class="live-dot"></span><strong>ICON NOW</strong><span>· LO QUE ESTÁ PASANDO AHORA</span></div>
   <header class="site-header article-header">
-    <a class="brand" href="index.html" aria-label="ICON Media">ICON<span>.</span></a>
-    <nav class="desktop-nav" aria-label="Principal">
-      <a href="index.html#latest">Lo último</a><a href="index.html#trending">Trending</a><a href="index.html#categories">Categorías</a>
-    </nav>
-    <a class="search-button" href="index.html" aria-label="Volver">←</a>
+    <a class="brand-logo-button" href="index.html" aria-label="ICON Media"><img src="Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=8" alt="ICON MEDIA" /></a>
+    <nav class="desktop-nav" aria-label="Principal"><a href="index.html#latest">Lo último</a><a href="index.html#trending">Trending</a><a href="index.html#categories">Categorías</a></nav>
+    <a class="search-button" href="index.html" aria-label="Volver">← <em>Volver</em></a>
   </header>
 
   <main class="article-page container">
     <div class="article-top">
-      <span class="eyebrow accent">VIRAL · ICON MEDIA</span>
+      <div class="article-breadcrumb"><a href="index.html">ICON MEDIA</a><span>→</span><strong>Viral</strong></div>
       <h1>Internet tiene una nueva obsesión 👀</h1>
       <p class="article-deck">Las historias, personas y momentos que están dominando la conversación. Esto es lo que sabemos hasta ahora.</p>
-      <div class="article-meta"><span>ICON MEDIA</span><span>·</span><span>7 SEPT 2026</span><span>·</span><span>4 MIN DE LECTURA</span></div>
+      <div class="article-meta-row">
+        <div class="article-author"><span class="author-avatar">IM</span><div class="author-name">Redacción ICON<small>ICON MEDIA · 7 SEPT 2026</small></div></div>
+        <div class="article-meta"><span>Actualizado 22:04</span><span>·</span><span>4 min de lectura</span></div>
+      </div>
     </div>
 
     <div class="article-hero" role="img" aria-label="Imagen principal de la noticia"></div>
+    <div class="article-caption">Imagen de referencia · ICON MEDIA</div>
 
     <div class="article-layout">
-      <aside class="article-share"><span>COMPARTIR</span><button class="share-button" type="button">X</button><button class="share-button" type="button">FB</button><button class="share-button" type="button">LINK</button></aside>
+      <aside class="article-share"><span>COMPARTIR</span><button class="share-button" type="button">X</button><button class="share-button" type="button">Facebook</button><button class="share-button" type="button">Copiar enlace</button></aside>
       <article class="article-body">
-        <p>Hay momentos que aparecen en tu feed una vez y, de repente, están absolutamente en todas partes. Una publicación, un video o una frase se convierte en conversación colectiva antes de que alguien alcance a explicar cómo pasó.</p>
+        <p class="lead">Hay momentos que aparecen en tu feed una vez y, de repente, están absolutamente en todas partes. Una publicación, un video o una frase se convierte en conversación colectiva antes de que alguien alcance a explicar cómo pasó.</p>
         <p>Ese es exactamente el tipo de historia que seguimos en ICON: lo que está pasando ahora, contado sin vueltas y con el contexto suficiente para entender por qué todo el mundo está hablando de ello.</p>
         <h2>¿Por qué todo el mundo está hablando de esto?</h2>
         <p>La conversación empezó a crecer en redes y rápidamente saltó entre plataformas. Los comentarios, teorías y reacciones hicieron que el tema dejara de ser una publicación más para convertirse en uno de los momentos del día.</p>
-        <p>Por ahora, hay muchas preguntas y pocas respuestas definitivas. Y sí: internet ya tiene sus propias teorías.</p>
+        <div class="article-note"><strong>EN CONTEXTO</strong><br>En ICON distinguimos entre lo confirmado y lo que solamente está circulando en redes. Las teorías de internet no son hechos hasta que existe información verificable.</div>
+        <p>Por ahora, hay muchas preguntas y pocas respuestas definitivas. Y sí: internet ya tiene sus propias teorías. Seguiremos actualizando esta nota cuando aparezca información relevante.</p>
         <div class="reaction-row" aria-label="Reacciones"><button class="reaction">😂 JAJA</button><button class="reaction">👀 ¿QUÉ?</button><button class="reaction">🔥 ICONIC</button><button class="reaction">💀 NO PUEDE SER</button></div>
-        <a class="back-link" href="index.html">← Volver a ICON</a>
+        <a class="back-link" href="index.html">← Volver a ICON MEDIA</a>
       </article>
     </div>
+
+    <section class="article-more">
+      <h2>También te puede interesar</h2>
+      <div class="related-grid">
+        <a class="related-card" href="article.html"><div class="related-image related-1"></div><span>FAMOSOS · HACE 32 MIN</span><h3>La publicación que acaba de incendiar los comentarios</h3></a>
+        <a class="related-card" href="article.html"><div class="related-image related-2"></div><span>MÚSICA · HACE 1 HORA</span><h3>La canción que ya empezó a aparecer en todos los feeds</h3></a>
+        <a class="related-card" href="article.html"><div class="related-image related-3"></div><span>VIRAL · HACE 2 HORAS</span><h3>El trend más random del mes: ¿por qué todos lo están haciendo?</h3></a>
+      </div>
+    </section>
   </main>
-  <footer class="footer container"><div class="footer-brand">ICON<span>.</span></div><p>Lo que está pasando.</p><div class="footer-links"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Contacto</a></div><small>© 2026 ICON MEDIA</small></footer>
+
+  <footer class="footer container article-footer"><div><div class="footer-brand">ICON<span>.</span></div><p>Lo que está pasando.</p></div><div class="footer-links"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Contacto</a></div><small>© 2026 ICON MEDIA</small></footer>
 </body>
 </html>
