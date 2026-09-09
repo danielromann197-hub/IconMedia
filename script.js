@@ -76,21 +76,17 @@ function renderHome() {
     hero.querySelector('.primary-cta')?.setAttribute('href', articleUrl(featured));
   }
 
-  const latest = document.querySelectorAll('.latest-editorial .story');
-  latest.forEach((card, index) => {
+  document.querySelectorAll('.latest-editorial .story').forEach((card, index) => {
     const article = news[index];
     if (article) applyArticleCard(card, article);
-    if (index === 0) card.querySelector('.editorial-kicker')?.replaceChildren(document.createTextNode('EN PORTADA'));
   });
 
-  const recent = document.querySelectorAll('.recent-grid .story');
-  recent.forEach((card, index) => {
+  document.querySelectorAll('.recent-grid .story').forEach((card, index) => {
     const article = news[(index + 4) % news.length];
     if (article) applyArticleCard(card, article);
   });
 
-  const trends = document.querySelectorAll('.trend-compact > a');
-  trends.forEach((card, index) => {
+  document.querySelectorAll('.trend-compact > a').forEach((card, index) => {
     const article = news[index + 4];
     if (!article) return;
     card.href = articleUrl(article);
@@ -115,44 +111,44 @@ function renderArticlePage() {
   const article = window.getIconNews(slug);
   document.title = `${article.title} — ICON MEDIA`;
   const top = document.querySelector('.article-top');
-  const label = top?.querySelector('.eyebrow');
+  const label = top?.querySelector('.article-breadcrumb strong');
   const title = top?.querySelector('h1');
   const deck = top?.querySelector('.article-deck');
-  const meta = top?.querySelector('.article-meta');
+  const metaRow = top?.querySelector('.article-meta-row');
+  const authorName = top?.querySelector('.author-name');
   const hero = document.querySelector('.article-hero');
   const body = document.querySelector('.article-body');
-  if (label) label.textContent = `${article.category} · ICON MEDIA`;
+  if (label) label.textContent = article.category;
   if (title) title.textContent = article.title;
   if (deck) deck.textContent = article.deck;
-  if (meta) meta.innerHTML = `<span>${article.author}</span><span>·</span><span>${article.date}</span><span>·</span><span>${article.read}</span>`;
+  if (authorName) authorName.innerHTML = `${article.author}<small>ICON MEDIA · ${article.date}</small>`;
+  if (metaRow) {
+    const meta = metaRow.querySelector('.article-meta');
+    if (meta) meta.innerHTML = `<span>Actualizado ${article.time}</span><span>·</span><span>${article.read}</span>`;
+  }
   if (hero) {
-    hero.style.backgroundImage = `linear-gradient(180deg,transparent 55%,rgba(0,0,0,.45)),url("${article.image}")`;
+    hero.style.backgroundImage = `linear-gradient(180deg,transparent 55%,rgba(0,0,0,.38)),url("${article.image}")`;
     hero.setAttribute('aria-label', article.title);
   }
   if (body) {
-    const reactionRow = body.querySelector('.reaction-row');
-    body.querySelectorAll('p:not(.article-note)').forEach(p => p.remove());
+    const lead = body.querySelector('.lead');
     const heading = body.querySelector('h2');
-    article.body.forEach((paragraph, index) => {
-      const p = document.createElement('p');
-      p.textContent = paragraph;
-      if (heading && index === 1) body.insertBefore(p, heading); else if (reactionRow) body.insertBefore(p, reactionRow); else body.appendChild(p);
-    });
+    const paragraphs = body.querySelectorAll('p:not(.article-note)');
+    if (lead) lead.textContent = article.body[0] || article.deck;
+    if (paragraphs[1]) paragraphs[1].textContent = article.body[1] || '';
+    if (paragraphs[2]) paragraphs[2].textContent = article.body[2] || '';
     if (heading) heading.textContent = '¿Por qué todo el mundo está hablando de esto?';
-    let related = body.querySelector('.article-related');
-    if (!related) {
-      related = document.createElement('section');
-      related.className = 'article-related';
-      related.innerHTML = '<h2>También te puede interesar</h2><div class="related-list"></div>';
-      body.appendChild(related);
-    }
-    const relatedList = related.querySelector('.related-list');
-    relatedList.innerHTML = '';
+  }
+
+  const relatedGrid = document.querySelector('.article-more .related-grid');
+  if (relatedGrid) {
+    relatedGrid.innerHTML = '';
     window.ICON_NEWS.filter(item => item.slug !== article.slug).slice(0, 3).forEach(item => {
       const link = document.createElement('a');
+      link.className = 'related-card';
       link.href = articleUrl(item);
-      link.innerHTML = `<span>${item.category}</span><strong>${item.title}</strong><small>${item.time} →</small>`;
-      relatedList.appendChild(link);
+      link.innerHTML = `<div class="related-image" style="background-image:url("${item.image}")"></div><span>${item.category} · ${item.time}</span><h3>${item.title}</h3>`;
+      relatedGrid.appendChild(link);
     });
   }
 }
@@ -160,8 +156,9 @@ function renderArticlePage() {
 renderHome();
 renderArticlePage();
 
-const cards = document.querySelectorAll('.story, .trend-compact>a');
-cards.forEach((card, index) => { card.style.animationDelay = `${index * 45}ms`; });
+document.querySelectorAll('.story, .trend-compact>a').forEach((card, index) => {
+  card.style.animationDelay = `${index * 45}ms`;
+});
 
 let deferredInstallPrompt = null;
 window.addEventListener('beforeinstallprompt', (event) => {
