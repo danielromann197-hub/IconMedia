@@ -1,0 +1,44 @@
+/* ICON MEDIA — Home polish */
+:root{--max:1240px;--radius:18px}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.container{width:min(var(--max),calc(100% - 56px))}
+.site-header{height:104px;position:sticky;top:0;background:rgba(255,255,255,.96);border-bottom:1px solid rgba(0,0,0,.07);backdrop-filter:blur(14px);box-shadow:0 2px 18px rgba(0,0,0,.035)}
+.brand-logo-button{width:74px;height:74px;box-shadow:0 8px 24px rgba(0,0,0,.15);transition:transform .2s ease,box-shadow .2s ease}
+.brand-logo-button:hover{transform:translateY(-2px) scale(1.025);box-shadow:0 12px 28px rgba(0,0,0,.2)}
+.desktop-nav{gap:27px}
+.desktop-nav a{font-size:10px;font-weight:800;position:relative;padding:8px 0}
+.desktop-nav a:after{content:'';position:absolute;left:0;right:100%;bottom:1px;height:2px;background:var(--accent);transition:right .2s ease}
+.desktop-nav a:hover:after{right:0}
+.search-button{min-width:150px;border-color:#cfcfcf;transition:border-color .2s,box-shadow .2s}
+.search-button:hover{border-color:#111;box-shadow:0 5px 16px rgba(0,0,0,.07)}
+.hero{margin-top:18px;margin-bottom:18px;height:500px;border-radius:22px;box-shadow:0 12px 40px rgba(0,0,0,.09)}
+.hero-image{background:linear-gradient(90deg,#050505 0%,rgba(5,5,5,.88) 15%,rgba(5,5,5,.25) 54%,rgba(5,5,5,.02) 100%),url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=92') center/cover;transition:transform .5s ease}
+.hero:hover .hero-image{transform:scale(1.012)}
+.hero-copy{left:42px;top:42px;width:45%}
+.hero h1{font-size:clamp(52px,5.6vw,82px);line-height:.86;letter-spacing:-.078em;max-width:650px;margin:22px 0 20px}
+.hero-copy>p{font-size:15px;line-height:1.4;color:#ddd}
+.primary-cta{padding:13px 19px;font-weight:900;transition:transform .2s,box-shadow .2s}
+.primary-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(223,255,0,.2)}
+.now-strip{min-height:50px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.section{padding:78px 0 12px}
+.section-head{padding-bottom:14px;margin-bottom:22px}
+.section-head h2{font-size:38px;line-height:.95}
+.news-grid{gap:20px}
+.story-image{height:235px;border-radius:13px;transition:transform .3s ease,box-shadow .3s ease}
+.story:hover .story-image{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,.13)}
+.story-body h3{font-size:21px;line-height:1.02;letter-spacing:-.046em}
+.story-foot a{transition:background .2s,transform .2s}
+.story-foot a:hover{background:var(--accent);color:#000;transform:rotate(8deg)}
+.category-icons span{transition:transform .2s,background .2s,border-color .2s}
+.category-icons a:hover span{transform:translateY(-3px);border-color:#111}
+.icon-promo,.newsletter-card{border-radius:13px}
+.icon-promo{min-height:175px;padding:23px}
+.newsletter-card{min-height:175px;padding:23px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+.trend-compact>a{padding:10px 0;transition:transform .2s}
+.trend-compact>a:hover{transform:translateX(4px)}
+.newsletter-bottom{border-radius:18px;padding:48px 52px;margin:72px auto;position:relative;overflow:hidden}
+.newsletter-bottom:after{content:'ICON';position:absolute;right:-25px;bottom:-65px;font-family:'Space Grotesk';font-size:210px;font-weight:900;line-height:1;letter-spacing:-.12em;color:rgba(0,0,0,.07);pointer-events:none}
+.newsletter-bottom h2{font-size:clamp(42px,5vw,66px);line-height:.9;letter-spacing:-.07em;position:relative;z-index:1}
+.newsletter-bottom .primary-cta{position:relative;z-index:2}
+@media(max-width:1100px){.site-header{padding:0 28px}.hero{height:450px}.hero-copy{width:54%}}
+@media(max-width:650px){.container{width:calc(100% - 28px)}.site-header{height:80px;padding:0 14px}.brand-logo-button{width:60px;height:60px}.hero{height:560px;margin-top:14px;border-radius:17px}.hero-copy{left:20px;top:23px;width:calc(100% - 40px)}.hero h1{font-size:clamp(48px,14vw,67px)}.section{padding:58px 0 8px}.section-head h2{font-size:30px}.story-image,.recent-grid .story-image{height:330px}.story-body h3{font-size:28px}.newsletter-bottom{padding:34px 25px;margin-top:58px}.newsletter-bottom h2{font-size:43px}.newsletter-bottom:after{font-size:140px;right:-18px;bottom:-35px}}
