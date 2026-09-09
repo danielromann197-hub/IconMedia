@@ -20,7 +20,7 @@
     <section class="admin-intro">
       <span class="eyebrow accent">CENTRO EDITORIAL</span>
       <h2>Publica una historia.<br><strong>Hazla importar.</strong></h2>
-      <p>Crea una noticia con la estructura editorial de ICON. Puedes guardarla como borrador, verla antes de publicar y exportar el contenido listo para incorporarlo al sitio.</p>
+      <p>Crea una noticia con la estructura editorial de ICON. Puedes guardarla como borrador, verla antes de publicar y, cuando el servidor esté configurado, publicarla directamente en el sitio.</p>
     </section>
 
     <div class="admin-grid">
@@ -36,10 +36,14 @@
           <label>Fecha<input id="date" type="date" required></label>
           <label>Tiempo de lectura<select id="reading"><option>2 min de lectura</option><option>3 min de lectura</option><option>4 min de lectura</option><option>5 min de lectura</option><option>7 min de lectura</option></select></label>
         </div>
-        <label>Imagen principal (URL)<input id="image" type="url" placeholder="https://..."><small>En esta versión el archivo de imagen se aloja aparte; después podemos conectar un almacenamiento.</small></label>
+        <label>Imagen principal (URL)<input id="image" type="url" placeholder="https://..."><small>En esta versión la imagen se aloja aparte; después podemos conectar un almacenamiento para subirla desde aquí.</small></label>
         <label>Contenido<textarea id="body" rows="14" required placeholder="Escribe la nota. Separa los párrafos con una línea en blanco."></textarea></label>
         <label class="check"><input id="featured" type="checkbox"> Marcar como noticia principal</label>
-        <div class="editor-actions"><button type="submit" class="btn-primary">Guardar borrador</button><button type="button" id="previewBtn" class="btn-secondary">Vista previa</button><button type="button" id="clearBtn" class="btn-ghost">Limpiar</button></div>
+        <div class="publish-box">
+          <label>Contraseña editorial<input id="adminPassword" type="password" autocomplete="current-password" placeholder="La contraseña de publicación de Vercel"></label>
+          <small>No se guarda en el navegador.</small>
+        </div>
+        <div class="editor-actions"><button type="submit" class="btn-primary">Guardar borrador</button><button type="button" id="publishBtn" class="btn-primary">PUBLICAR</button><button type="button" id="previewBtn" class="btn-secondary">Vista previa</button><button type="button" id="clearBtn" class="btn-ghost">Limpiar</button></div>
       </form>
 
       <aside class="preview-card">
@@ -56,6 +60,6 @@
 
     <div id="toast" class="admin-toast" role="status"></div>
   </main>
-  <script src="admin.js?v=1"></script>
+  <script src="admin.js?v=2"></script>
 </body>
 </html>
