@@ -44,6 +44,7 @@ function applyArticleCard(card, article) {
   const desc = card.querySelector('.story-body p');
   const time = card.querySelector('.story-foot p') || card.querySelector('.story-body > p');
   const links = card.querySelectorAll('a');
+
   if (image) {
     image.style.backgroundImage = `url("${article.image}")`;
     image.href = articleUrl(article);
@@ -60,11 +61,13 @@ function renderHome() {
   const news = window.ICON_NEWS;
   const featured = news.find(item => item.featured) || news[0];
   const hero = document.querySelector('.hero');
+
   if (hero) {
     const heroImage = hero.querySelector('.hero-image');
     const heroTitle = hero.querySelector('h1');
     const heroDesc = hero.querySelector('.hero-copy > p');
     const heroMeta = hero.querySelector('.meta');
+
     if (heroImage) {
       heroImage.style.backgroundImage = `linear-gradient(90deg,rgba(5,5,5,.9) 0%,rgba(5,5,5,.5) 30%,rgba(5,5,5,0) 65%), url("${featured.image}")`;
       heroImage.href = articleUrl(featured);
@@ -87,7 +90,7 @@ function renderHome() {
   });
 
   document.querySelectorAll('.trend-compact > a').forEach((card, index) => {
-    const article = news[index + 4];
+    const article = news[index + 1];
     if (!article) return;
     card.href = articleUrl(article);
     const image = card.querySelector('.trend-mini');
@@ -107,9 +110,12 @@ function renderHome() {
 
 function renderArticlePage() {
   if (!window.ICON_NEWS || !document.querySelector('.article-page')) return;
+
   const slug = new URLSearchParams(window.location.search).get('slug');
   const article = window.getIconNews(slug);
+
   document.title = `${article.title} — ICON MEDIA`;
+
   const top = document.querySelector('.article-top');
   const label = top?.querySelector('.article-breadcrumb strong');
   const title = top?.querySelector('h1');
@@ -118,43 +124,92 @@ function renderArticlePage() {
   const authorName = top?.querySelector('.author-name');
   const hero = document.querySelector('.article-hero');
   const body = document.querySelector('.article-body');
+
   if (label) label.textContent = article.category;
   if (title) title.textContent = article.title;
   if (deck) deck.textContent = article.deck;
   if (authorName) authorName.innerHTML = `${article.author}<small>ICON MEDIA · ${article.date}</small>`;
+
   if (metaRow) {
     const meta = metaRow.querySelector('.article-meta');
     if (meta) meta.innerHTML = `<span>Actualizado ${article.time}</span><span>·</span><span>${article.read}</span>`;
   }
+
   if (hero) {
     hero.style.backgroundImage = `linear-gradient(180deg,transparent 55%,rgba(0,0,0,.38)),url("${article.image}")`;
     hero.setAttribute('aria-label', article.title);
   }
+
   if (body) {
     const lead = body.querySelector('.lead');
     const heading = body.querySelector('h2');
-    const paragraphs = body.querySelectorAll('p:not(.article-note)');
+    const note = body.querySelector('.article-note');
+
     if (lead) lead.textContent = article.body[0] || article.deck;
-    if (paragraphs[1]) paragraphs[1].textContent = article.body[1] || '';
-    if (paragraphs[2]) paragraphs[2].textContent = article.body[2] || '';
-    if (heading) heading.textContent = '¿Por qué todo el mundo está hablando de esto?';
+
+    // Rebuild the article body from the editorial source so every paragraph is displayed.
+    const existingHeading = heading?.cloneNode(true);
+    const existingNote = note?.cloneNode(true);
+    body.querySelectorAll('p:not(.article-note), h2').forEach(node => node.remove());
+
+    article.body.forEach((paragraph, index) => {
+      const p = document.createElement('p');
+      p.textContent = paragraph;
+      if (index === 0) p.className = 'lead';
+      body.insertBefore(p, existingHeading || existingNote || null);
+    });
+
+    if (existingHeading) {
+      existingHeading.textContent = 'Lo que hay que saber';
+      body.insertBefore(existingHeading, existingNote || null);
+    }
+
+    if (existingNote) {
+      existingNote.textContent = article.source
+        ? `Fuente consultada: ${article.source}. ICON MEDIA separa los datos confirmados de las interpretaciones y tendencias en redes.`
+        : 'ICON MEDIA separa los datos confirmados de las interpretaciones y tendencias en redes.';
+      body.appendChild(existingNote);
+    }
   }
 
   const relatedGrid = document.querySelector('.article-more .related-grid');
   if (relatedGrid) {
     relatedGrid.innerHTML = '';
-    window.ICON_NEWS.filter(item => item.slug !== article.slug).slice(0, 3).forEach(item => {
-      const link = document.createElement('a');
-      link.className = 'related-card';
-      link.href = articleUrl(item);
-      link.innerHTML = `<div class="related-image" style="background-image:url("${item.image}")"></div><span>${item.category} · ${item.time}</span><h3>${item.title}</h3>`;
-      relatedGrid.appendChild(link);
-    });
+    window.ICON_NEWS
+      .filter(item => item.slug !== article.slug)
+      .slice(0, 3)
+      .forEach(item => {
+        const link = document.createElement('a');
+        link.className = 'related-card';
+        link.href = articleUrl(item);
+        link.innerHTML = `<div class="related-image" style="background-image:url('${item.image}')"></div><span>${item.category} · ${item.time}</span><h3>${item.title}</h3>`;
+        relatedGrid.appendChild(link);
+      });
   }
+}
+
+function renderCategoryPage() {
+  if (!window.ICON_NEWS || !document.querySelector('.category-page')) return;
+
+  const cards = document.querySelectorAll('.category-card');
+  const categories = [...new Set(window.ICON_NEWS.map(article => article.category))];
+
+  cards.forEach(card => {
+    const heading = card.querySelector('h2');
+    const category = heading?.textContent.trim().toUpperCase();
+    if (!category) return;
+
+    const count = window.ICON_NEWS.filter(article => article.category === category).length;
+    const small = card.querySelector('small');
+    if (small) small.textContent = `${small.textContent.split('·')[0]}· ${count} ${count === 1 ? 'NOTA' : 'NOTAS'}`;
+
+    card.href = `index.html#latest`;
+  });
 }
 
 renderHome();
 renderArticlePage();
+renderCategoryPage();
 
 document.querySelectorAll('.story, .trend-compact>a').forEach((card, index) => {
   card.style.animationDelay = `${index * 45}ms`;
