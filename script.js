@@ -50,7 +50,7 @@ function applyArticleCard(card, article) {
     image.href = articleUrl(article);
     image.querySelector('.category')?.replaceChildren(document.createTextNode(article.category));
   }
-  if (title) title.textContent = article.title;
+  if (title) title.textContent = article.homeTitle || article.title;
   if (desc && desc !== time) desc.textContent = article.deck;
   if (time) time.textContent = article.time;
   links.forEach(link => link.href = articleUrl(article));
@@ -73,7 +73,7 @@ function renderHome() {
       heroImage.href = articleUrl(featured);
       heroImage.querySelector('.hero-category').textContent = featured.category;
     }
-    if (heroTitle) heroTitle.innerHTML = `${featured.title} <span>👀</span>`;
+    if (heroTitle) heroTitle.innerHTML = `${featured.homeTitle || featured.title} <span>👀</span>`;
     if (heroDesc) heroDesc.textContent = featured.deck;
     if (heroMeta) heroMeta.innerHTML = `<span>${featured.author.toUpperCase()}</span><span>·</span><span>${featured.time}</span>`;
     hero.querySelector('.primary-cta')?.setAttribute('href', articleUrl(featured));
@@ -97,7 +97,7 @@ function renderHome() {
     const title = card.querySelector('strong');
     const time = card.querySelector('small');
     if (image) image.style.backgroundImage = `url("${article.image}")`;
-    if (title) title.textContent = article.title;
+    if (title) title.textContent = article.homeTitle || article.title;
     if (time) time.textContent = article.time;
   });
 
@@ -141,31 +141,25 @@ function renderArticlePage() {
   }
 
   if (body) {
-    const heading = body.querySelector('h2');
-    const note = body.querySelector('.article-note');
-    const existingHeading = heading?.cloneNode(true);
-    const existingNote = note?.cloneNode(true);
-
-    body.querySelectorAll('p:not(.article-note), h2').forEach(node => node.remove());
+    body.innerHTML = '';
 
     article.body.forEach((paragraph, index) => {
       const p = document.createElement('p');
       p.textContent = paragraph;
       if (index === 0) p.className = 'lead';
-      body.insertBefore(p, existingHeading || existingNote || null);
+      body.appendChild(p);
     });
 
-    if (existingHeading) {
-      existingHeading.textContent = 'Lo que hay que saber';
-      body.insertBefore(existingHeading, existingNote || null);
-    }
+    const heading = document.createElement('h2');
+    heading.textContent = 'Lo que hay que saber';
+    body.appendChild(heading);
 
-    if (existingNote) {
-      existingNote.textContent = article.source
-        ? `Fuente consultada: ${article.source}. ICON MEDIA separa los datos confirmados de las interpretaciones y tendencias en redes.`
-        : 'ICON MEDIA separa los datos confirmados de las interpretaciones y tendencias en redes.';
-      body.appendChild(existingNote);
-    }
+    const note = document.createElement('div');
+    note.className = 'article-note';
+    note.textContent = article.source
+      ? `Fuente consultada: ${article.source}. ICON MEDIA separa los datos confirmados de las interpretaciones y tendencias en redes.`
+      : 'ICON MEDIA separa los datos confirmados de las interpretaciones y tendencias en redes.';
+    body.appendChild(note);
   }
 
   const relatedGrid = document.querySelector('.article-more .related-grid');
