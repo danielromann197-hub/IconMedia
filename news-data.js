@@ -12,7 +12,7 @@ window.ICON_NEWS = [
       'Otra de las novedades es la edición conversacional. YouTube mostró una herramienta en la que el creador puede describir en lenguaje natural qué quiere cambiar en un video. Su lanzamiento para Shorts y YouTube Create está previsto para 2027.',
       'El cambio es interesante porque la IA ya no aparece solamente como una herramienta para generar contenido: también empieza a funcionar como asistente dentro del flujo de trabajo de quienes crean contenido todos los días.'
     ],
-    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/made-on-youtube-2026-creation-.max-2400x3000.format-webp.webp',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/made-on-youtube-2026-creation-.max-100x3000.format-webp.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -161,7 +161,7 @@ window.ICON_NEWS = [
       'Eso ayuda a explicar por qué una canción vieja, un meme de un grupo específico o un creador desconocido pueden convertirse de repente en conversación general.',
       'El nuevo mainstream no necesariamente nace en televisión, radio o grandes medios. Muchas veces empieza en un rincón de internet y crece porque la propia comunidad lo empuja.'
     ],
-    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YouTube-Mainstream-Report-Cove.max-2400x3000.format-webp.webp',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YouTube-Mainstream-Report-Cove.max-100x3000.format-webp.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -224,7 +224,7 @@ window.ICON_NEWS = [
       'La apuesta tiene una lógica clara: el creador ya no es solamente alguien que publica videos. Para muchas audiencias, también es el centro de una comunidad, un fandom y hasta una marca.',
       'El reto será conseguir que todas estas funciones sumen a la experiencia sin hacer que cada canal termine pareciendo una aplicación diferente dentro de YouTube.'
     ],
-    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YTM_blog_post_Badges.max-2400x3000.format-webp.webp',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YTM_blog_post_Badges.max-100x3000.format-webp.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
