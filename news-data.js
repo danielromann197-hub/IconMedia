@@ -19,7 +19,7 @@ window.ICON_NEWS = [
     author: 'Redacción ICON',
     featured: true,
     source: 'YouTube Blog / TechCrunch',
-    sourceUrl: 'https://blog.youtube/news-and-events/innovation-youtube-era-made-on-viewers-creators/'
+    sourceUrl: 'https://blog.youtube/news-and-events/made-on-youtube-new-tools-power-creation-journey/'
   },
   {
     slug: 'roblox-20-anos-ia-creadores',
@@ -77,7 +77,7 @@ window.ICON_NEWS = [
       'El fenómeno vuelve a demostrar algo que la industria musical ya conoce muy bien: una canción no necesita ser nueva para volver a convertirse en tendencia.',
       'En la era del feed, un audio puede tener una segunda vida completamente distinta a la que tuvo cuando fue lanzado.'
     ],
-    image: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://i.ytimg.com/vi/Va8Udsvqigs/maxresdefault.jpg',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -98,7 +98,7 @@ window.ICON_NEWS = [
       'A nivel global, TikTok eligió The One That Got Away de Katy Perry como su canción del verano. La plataforma señala que el tema apareció en más de 42 millones de videos y superó los 55 mil millones de visualizaciones.',
       'Más que una lista de canciones, estos rankings sirven como una fotografía de cómo el internet mexicano está redescubriendo música y convirtiéndola en soundtrack de nuevos trends.'
     ],
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://i.ytimg.com/vi/pCPYb7KPoUc/maxresdefault.jpg',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -119,7 +119,7 @@ window.ICON_NEWS = [
       'Para los creadores, el cambio puede ser especialmente interesante porque una conversación que antes terminaba en comentarios ahora puede convertirse en una nueva pieza de contenido.',
       'La tendencia apunta a algo más grande: las redes están intentando que los usuarios no solamente consuman un video, sino que participen activamente en lo que ocurre alrededor de él.'
     ],
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=2400&q=95',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -140,7 +140,7 @@ window.ICON_NEWS = [
       'La apuesta refleja cómo la recomendación de libros en redes dejó de ser un nicho para convertirse en una parte visible de la conversación cultural digital.',
       'Para ICON, hay una lectura interesante: internet no solamente está creando nuevas estrellas; también está cambiando la manera en que descubrimos libros, música, videojuegos y otras formas de cultura.'
     ],
-    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=2400&q=95',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -161,7 +161,7 @@ window.ICON_NEWS = [
       'Eso ayuda a explicar por qué una canción vieja, un meme de un grupo específico o un creador desconocido pueden convertirse de repente en conversación general.',
       'El nuevo mainstream no necesariamente nace en televisión, radio o grandes medios. Muchas veces empieza en un rincón de internet y crece porque la propia comunidad lo empuja.'
     ],
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YouTube-Mainstream-Report-Cove.max-100x3000.format-webp.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -182,7 +182,7 @@ window.ICON_NEWS = [
       'Más allá de las cifras, el fenómeno explica por qué cada vez más negocios producen contenido pensando como creadores: un video puede funcionar al mismo tiempo como recomendación, escaparate y punto de descubrimiento.',
       'Para los creadores, esto también abre otra oportunidad: contar historias sobre lugares y productos puede tener un impacto que va mucho más allá de conseguir reproducciones.'
     ],
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2400&q=95',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -203,7 +203,7 @@ window.ICON_NEWS = [
       'La plataforma concentra varios lanzamientos hacia la segunda mitad del mes, justo cuando las conversaciones de series y anime suelen comenzar a dominar redes sociales.',
       'Como siempre, el estreno no termina cuando aparece el capítulo: teorías, clips, memes y reacciones pueden convertir una serie en fenómeno mucho después de su lanzamiento.'
     ],
-    image: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQdLRY5qmSdXEz0MQIMpdvK53GILUyWfkByG2CNxxjtOCuBmsqGmnLx2FHRjh9mRLHPcQK2DKA8_kdiBrFeSiU04-pTJVcYKh-OJg_r8B4K9F-8fS37KnVFOYm0i050hfCIUMS3hQLn5TvUn5RFjzPG7AKpo.jpg?r=dc6',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -224,7 +224,7 @@ window.ICON_NEWS = [
       'La apuesta tiene una lógica clara: el creador ya no es solamente alguien que publica videos. Para muchas audiencias, también es el centro de una comunidad, un fandom y hasta una marca.',
       'El reto será conseguir que todas estas funciones sumen a la experiencia sin hacer que cada canal termine pareciendo una aplicación diferente dentro de YouTube.'
     ],
-    image: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YTM_blog_post_Badges.max-100x3000.format-webp.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
