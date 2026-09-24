@@ -34,7 +34,7 @@ window.ICON_NEWS = [
       'Pero el cambio no se queda en la creación. Roblox anunció planes para que los desarrolladores puedan distribuir sus experiencias como aplicaciones independientes en móviles, PC y consolas. También prepara una opción para entrar a determinados juegos desde Chrome sin instalar la aplicación.',
       'Para una generación acostumbrada a descubrir juegos desde videos y redes sociales, la frontera entre crear, compartir y jugar cada vez se está haciendo más pequeña.'
     ],
-    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://cms-media.roblox.com/assets/ced9560d-5aa5-42d3-b5d8-8e70abeac00c.png',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '4 MIN DE LECTURA',
@@ -55,7 +55,7 @@ window.ICON_NEWS = [
       'El reporte también destaca a creadores mexicanos. Twitch menciona a aldo_geo por su evento de Minecraft Geoware World y a Deusamir por su participación competitiva en Call of Duty.',
       'Los datos muestran que el streaming de videojuegos ya no gira alrededor de un solo título. Las comunidades saltan entre juegos, eventos, servidores, competencias y experiencias creadas específicamente para las transmisiones.'
     ],
-    image: 'https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://cdn.m7g.twitch.tv/ba46b4e5e395b11efd34/assets/uploads/State%20of%20Gaming-1.png',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
