@@ -1,9 +1,10 @@
-const CACHE = 'icon-media-v1';
+const CACHE = 'icon-media-v2';
 const APP_SHELL = [
   '/',
   '/index.html',
   '/styles.css',
   '/script.js',
+  '/news-data.js',
   '/categorias.html',
   '/article.html',
   '/manifest.webmanifest',
@@ -15,7 +16,11 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim()));
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener('fetch', event => {
