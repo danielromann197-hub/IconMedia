@@ -3,6 +3,7 @@ window.ICON_NEWS = [
     slug: 'youtube-convierte-studio-en-asistente-ia-para-creadores',
     category: 'CREADORES',
     title: 'YouTube quiere convertirse en el copiloto de los creadores con nuevas herramientas de IA',
+    homeTitle: 'YouTube quiere ser el copiloto de los creadores',
     deck: 'La plataforma anunció funciones para analizar borradores, generar miniaturas, probar versiones de videos y ayudar con la estrategia de cada canal.',
     body: [
       'YouTube acaba de presentar una nueva generación de herramientas para creadores y esta vez la inteligencia artificial está metida prácticamente en todo el proceso.',
@@ -24,6 +25,7 @@ window.ICON_NEWS = [
     slug: 'roblox-20-anos-ia-creadores',
     category: 'GAMING',
     title: 'Roblox cumple 20 años y ahora quiere que crear un juego sea tan fácil como escribir un prompt',
+    homeTitle: 'Roblox quiere que crear juegos sea tan fácil como escribir',
     deck: 'La plataforma está ampliando sus herramientas de IA y preparando nuevas formas de jugar fuera de la app tradicional.',
     body: [
       'Roblox llegó a su aniversario número 20 con una apuesta clara: que crear experiencias dentro de su plataforma sea cada vez más accesible para personas que nunca han usado un motor de videojuegos.',
@@ -44,6 +46,7 @@ window.ICON_NEWS = [
     slug: 'twitch-gaming-mexico-2026',
     category: 'STREAMERS',
     title: 'Twitch revela qué está moviendo al gaming en México durante 2026',
+    homeTitle: 'Esto es lo que más mueve el gaming en México',
     deck: 'League of Legends encabeza la lista mexicana, mientras QSMP y Fortnite también aparecen entre los juegos más vistos.',
     body: [
       'Twitch publicó su reporte State of Gaming 2026 con datos recopilados entre el 1 de enero y el 1 de septiembre, y México aparece con una combinación bastante particular de comunidades.',
@@ -65,6 +68,7 @@ window.ICON_NEWS = [
     slug: 'training-season-regresa-tiktok',
     category: 'MÚSICA',
     title: 'Una canción de Dua Lipa de 2024 volvió a explotar en TikTok',
+    homeTitle: 'Dua Lipa volvió a explotar en TikTok',
     deck: '“Training Season” regresó al centro de la conversación gracias a un nuevo trend y acaba de superar los mil millones de streams en Spotify.',
     body: [
       'Hay canciones que se estrenan, funcionan y siguen su camino. Y luego están las que internet decide rescatar meses o incluso años después.',
@@ -85,6 +89,7 @@ window.ICON_NEWS = [
     slug: 'doma-cancion-verano-tiktok-mexico',
     category: 'TENDENCIAS',
     title: '“Doma” fue la canción del verano 2026 en TikTok México',
+    homeTitle: '“Doma” fue la canción del verano en TikTok México',
     deck: 'Jósean Log encabezó la lista mexicana de TikTok, en una temporada marcada por canciones nuevas, clásicos y sonidos que regresaron al feed.',
     body: [
       'TikTok ya publicó su balance musical del verano y México tuvo una protagonista clara: Doma, de Jósean Log.',
@@ -105,6 +110,7 @@ window.ICON_NEWS = [
     slug: 'tiktok-comentarios-interactivos',
     category: 'INTERNET',
     title: 'TikTok está convirtiendo los comentarios en otra forma de crear contenido',
+    homeTitle: 'TikTok quiere convertir tus comentarios en contenido',
     deck: 'La plataforma comenzó a incorporar comentarios de voz, encuestas y carruseles de fotos para hacer más interactiva la conversación.',
     body: [
       'El comentario dejó de ser solamente texto. TikTok anunció nuevas funciones que convierten esa zona debajo de los videos en un espacio mucho más parecido a una extensión del contenido.',
@@ -125,6 +131,7 @@ window.ICON_NEWS = [
     slug: 'tiktok-book-awards-mexico',
     category: 'CULTURA',
     title: 'México tendrá la primera edición de los TikTok Book Awards en Latinoamérica',
+    homeTitle: 'México tendrá sus primeros TikTok Book Awards',
     deck: 'TikTok y la FIL Guadalajara preparan unos premios para reconocer a creadores literarios, editoriales y narrativa gráfica.',
     body: [
       'TikTok y la Feria Internacional del Libro de Guadalajara anunciaron la primera edición mexicana de los TikTok Book Awards, una iniciativa que lleva la conversación de BookTok al terreno de los reconocimientos culturales.',
@@ -145,6 +152,7 @@ window.ICON_NEWS = [
     slug: 'youtube-cultura-mainstream-2026',
     category: 'TENDENCIAS',
     title: '¿Desapareció la cultura mainstream? YouTube dice que no exactamente',
+    homeTitle: 'El nuevo mainstream también nace en internet',
     deck: 'Un nuevo reporte analiza cómo los memes, creadores y comunidades pequeñas terminan entrando en conversaciones masivas.',
     body: [
       'En internet todos tenemos un feed diferente, pero eso no significa que hayan desaparecido las tendencias que todo el mundo termina conociendo.',
@@ -165,6 +173,7 @@ window.ICON_NEWS = [
     slug: 'tiktok-negocios-mexico-descubrimiento',
     category: 'CREADORES',
     title: 'TikTok también se está convirtiendo en buscador de negocios para los mexicanos',
+    homeTitle: 'TikTok ya es el nuevo buscador de negocios',
     deck: 'Un estudio presentado por TikTok señala que millones de usuarios descubren establecimientos y productos a través de recomendaciones en la plataforma.',
     body: [
       'Cuando alguien busca dónde comer, qué comprar o qué lugar visitar, TikTok se ha convertido en una de las plataformas donde muchos usuarios empiezan a buscar referencias.',
@@ -185,6 +194,7 @@ window.ICON_NEWS = [
     slug: 'netflix-estrenos-septiembre-2026',
     category: 'SERIES',
     title: 'Netflix llega al cierre de septiembre con nuevas series, anime y regresos',
+    homeTitle: 'Lo nuevo de Netflix para cerrar septiembre',
     deck: 'Entre los estrenos del mes aparecen Stranger Things: Relatos del 85, Pokémon Horizontes y nuevas temporadas de varias series.',
     body: [
       'Septiembre está cerrando con una nueva tanda de estrenos en Netflix y hay opciones para prácticamente todos los feeds.',
@@ -205,6 +215,7 @@ window.ICON_NEWS = [
     slug: 'youtube-fandom-creadores-2026',
     category: 'CREADORES',
     title: 'YouTube quiere que los fandoms pasen más tiempo dentro de la plataforma',
+    homeTitle: 'YouTube quiere convertir espectadores en comunidades',
     deck: 'Nuevas comunidades, funciones para directos y herramientas de membresía buscan convertir espectadores en comunidades más activas.',
     body: [
       'YouTube presentó nuevas funciones pensadas para que los seguidores no solamente vean videos, sino que tengan más formas de participar alrededor de sus creadores favoritos.',
