@@ -11,7 +11,7 @@ window.ICON_NEWS = [
       'Otra de las novedades es la edición conversacional. YouTube mostró una herramienta en la que el creador puede describir en lenguaje natural qué quiere cambiar en un video. Su lanzamiento para Shorts y YouTube Create está previsto para 2027.',
       'El cambio es interesante porque la IA ya no aparece solamente como una herramienta para generar contenido: también empieza a funcionar como asistente dentro del flujo de trabajo de quienes crean contenido todos los días.'
     ],
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1600&q=90',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/made-on-youtube-2026-creation-.max-100x3000.format-webp.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
