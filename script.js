@@ -141,15 +141,11 @@ function renderArticlePage() {
   }
 
   if (body) {
-    const lead = body.querySelector('.lead');
     const heading = body.querySelector('h2');
     const note = body.querySelector('.article-note');
-
-    if (lead) lead.textContent = article.body[0] || article.deck;
-
-    // Rebuild the article body from the editorial source so every paragraph is displayed.
     const existingHeading = heading?.cloneNode(true);
     const existingNote = note?.cloneNode(true);
+
     body.querySelectorAll('p:not(.article-note), h2').forEach(node => node.remove());
 
     article.body.forEach((paragraph, index) => {
@@ -175,35 +171,27 @@ function renderArticlePage() {
   const relatedGrid = document.querySelector('.article-more .related-grid');
   if (relatedGrid) {
     relatedGrid.innerHTML = '';
-    window.ICON_NEWS
-      .filter(item => item.slug !== article.slug)
-      .slice(0, 3)
-      .forEach(item => {
-        const link = document.createElement('a');
-        link.className = 'related-card';
-        link.href = articleUrl(item);
-        link.innerHTML = `<div class="related-image" style="background-image:url('${item.image}')"></div><span>${item.category} · ${item.time}</span><h3>${item.title}</h3>`;
-        relatedGrid.appendChild(link);
-      });
+    window.ICON_NEWS.filter(item => item.slug !== article.slug).slice(0, 3).forEach(item => {
+      const link = document.createElement('a');
+      link.className = 'related-card';
+      link.href = articleUrl(item);
+      link.innerHTML = `<div class="related-image" style="background-image:url('${item.image}')"></div><span>${item.category} · ${item.time}</span><h3>${item.title}</h3>`;
+      relatedGrid.appendChild(link);
+    });
   }
 }
 
 function renderCategoryPage() {
   if (!window.ICON_NEWS || !document.querySelector('.category-page')) return;
 
-  const cards = document.querySelectorAll('.category-card');
-  const categories = [...new Set(window.ICON_NEWS.map(article => article.category))];
-
-  cards.forEach(card => {
+  document.querySelectorAll('.category-card').forEach(card => {
     const heading = card.querySelector('h2');
     const category = heading?.textContent.trim().toUpperCase();
     if (!category) return;
-
     const count = window.ICON_NEWS.filter(article => article.category === category).length;
     const small = card.querySelector('small');
     if (small) small.textContent = `${small.textContent.split('·')[0]}· ${count} ${count === 1 ? 'NOTA' : 'NOTAS'}`;
-
-    card.href = `index.html#latest`;
+    card.href = 'index.html#latest';
   });
 }
 
@@ -240,5 +228,5 @@ window.addEventListener('appinstalled', () => {
 });
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js?v=3').catch(() => {}));
 }
