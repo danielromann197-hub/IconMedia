@@ -1,4 +1,4 @@
-const CACHE = 'icon-media-v2';
+const CACHE = 'icon-media-v3';
 const APP_SHELL = [
   '/',
   '/index.html',
