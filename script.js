@@ -400,7 +400,23 @@ function closeIconVideo() {
   if (track) track.innerHTML = '';
   if (dialog.open) dialog.close();
 }
+
+function initIconLoopButton() {
+  const button = document.getElementById('iconLoopButton');
+  if (!button) return;
+
+  button.addEventListener('click', () => {
+    if (window.ICON_FEED_VIDEOS?.length) {
+      openIconVideo(0);
+      return;
+    }
+
+    document.getElementById('iconFeed')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
 initIconFeed();
+initIconLoopButton();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js?v=4').catch(() => {}));
