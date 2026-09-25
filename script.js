@@ -313,6 +313,90 @@ window.addEventListener('beforeinstallprompt', event => {
 });
 window.addEventListener('appinstalled', () => { deferredInstallPrompt = null; document.querySelector('.install-app')?.remove(); });
 
+async function initIconFeed() {
+  const grid = document.getElementById('iconFeedGrid');
+  const status = document.getElementById('iconFeedStatus');
+  if (!grid) return;
+
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+  }[char]));
+
+  try {
+    const response = await fetch('/api/youtube-feed', { headers: { Accept: 'application/json' } });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'No se pudo cargar el feed.');
+
+    if (!data.videos?.length) {
+      grid.innerHTML = '<div class="icon-feed-empty">Todavía no hay Shorts publicados.</div>';
+      return;
+    }
+
+    grid.innerHTML = data.videos.map(video => {
+      const title = escapeHtml(video.title);
+      const date = video.publishedAt
+        ? new Intl.DateTimeFormat('es-MX', { day:'numeric', month:'short', year:'numeric' }).format(new Date(video.publishedAt))
+        : '';
+      return `
+        <article class="icon-feed-card">
+          <button class="icon-feed-video" type="button" data-video-id="${escapeHtml(video.id)}" aria-label="Reproducir ${title}">
+            <img src="${escapeHtml(video.thumbnail)}" alt="${title}" loading="lazy" decoding="async">
+            <span class="icon-feed-overlay"><span class="icon-feed-play">▶</span><small>SHORT</small></span>
+          </button>
+          <div class="icon-feed-copy">
+            <span>ICON MEDIA · ${escapeHtml(date)}</span>
+            <h3>${title}</h3>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    grid.querySelectorAll('.icon-feed-video').forEach(button => {
+      button.addEventListener('click', () => openIconVideo(button.dataset.videoId));
+    });
+
+    if (status) status.textContent = data.videos.length + ' Shorts recientes · actualización automática';
+  } catch (error) {
+    grid.innerHTML = '<div class="icon-feed-empty">No pudimos cargar los Shorts ahora. Intenta de nuevo en unos minutos.</div>';
+    if (status) status.textContent = '';
+    console.error('ICON FEED:', error);
+  }
+}
+
+function openIconVideo(videoId) {
+  if (!videoId) return;
+  let dialog = document.getElementById('iconVideoDialog');
+
+  if (!dialog) {
+    dialog = document.createElement('dialog');
+    dialog.id = 'iconVideoDialog';
+    dialog.className = 'icon-video-dialog';
+    dialog.innerHTML = `
+      <div class="icon-video-modal">
+        <button class="icon-video-close" type="button" aria-label="Cerrar">×</button>
+        <div class="icon-video-frame"><iframe title="Short de ICON MEDIA" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+    `;
+    document.body.appendChild(dialog);
+    dialog.querySelector('.icon-video-close').addEventListener('click', () => {
+      dialog.close();
+      dialog.querySelector('iframe').src = 'about:blank';
+    });
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) {
+        dialog.close();
+        dialog.querySelector('iframe').src = 'about:blank';
+      }
+    });
+  }
+
+  const iframe = dialog.querySelector('iframe');
+  iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&playsinline=1&rel=0';
+  if (typeof dialog.showModal === 'function') dialog.showModal();
+}
+
+initIconFeed();
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js?v=4').catch(() => {}));
 }
