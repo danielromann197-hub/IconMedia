@@ -24,7 +24,7 @@ async function getFromRss() {
   if (!rssResponse.ok) throw new Error("No se pudo consultar el feed público de YouTube.");
 
   const xml = await rssResponse.text();
-  const entries = [...xml.matchAll(/<entry>([\\s\\S]*?)<\\/entry>/g)];
+  const entries = [...xml.matchAll(/<entry>([\\s\\S]*?)<\/entry>/g)];
 
   const decode = value => value
     .replace(/&amp;/g, "&")
@@ -35,9 +35,9 @@ async function getFromRss() {
 
   return entries.map(match => {
     const entry = match[1];
-    const id = entry.match(/<yt:videoId>([^<]+)<\\/yt:videoId>/)?.[1];
-    const title = entry.match(/<title>([\\s\\S]*?)<\\/title>/)?.[1];
-    const publishedAt = entry.match(/<published>([^<]+)<\\/published>/)?.[1];
+    const id = entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1];
+    const title = entry.match(/<title>([\\s\\S]*?)<\/title>/)?.[1];
+    const publishedAt = entry.match(/<published>([^<]+)<\/published>/)?.[1];
     if (!id) return null;
 
     return {
