@@ -26,3 +26,5 @@ html,body{min-height:100%;overflow-x:hidden}
 @media(display-mode:standalone){
   .site-header{position:sticky;top:env(safe-area-inset-top,0px)}
 }
+
+.search-button span{color:#000;-webkit-text-fill-color:#000}
