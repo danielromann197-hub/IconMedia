@@ -318,44 +318,21 @@ async function initIconFeed() {
   const status = document.getElementById('iconFeedStatus');
   if (!grid) return;
 
-  const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
-  }[char]));
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' }[char]));
 
   try {
     const response = await fetch('/api/youtube-feed', { headers: { Accept: 'application/json' } });
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || 'No se pudo cargar el feed.');
-
-    if (!data.videos?.length) {
-      grid.innerHTML = '<div class="icon-feed-empty">Todavía no hay Shorts publicados.</div>';
-      return;
-    }
-
-    grid.innerHTML = data.videos.map(video => {
+    if (!data.videos?.length) { grid.innerHTML = '<div class="icon-feed-empty">Todavía no hay Shorts publicados.</div>'; return; }
+    window.ICON_FEED_VIDEOS = data.videos;
+    grid.innerHTML = data.videos.map((video, index) => {
       const title = escapeHtml(video.title);
-      const date = video.publishedAt
-        ? new Intl.DateTimeFormat('es-MX', { day:'numeric', month:'short', year:'numeric' }).format(new Date(video.publishedAt))
-        : '';
-      return `
-        <article class="icon-feed-card">
-          <button class="icon-feed-video" type="button" data-video-id="${escapeHtml(video.id)}" aria-label="Reproducir ${title}">
-            <img src="${escapeHtml(video.thumbnail)}" alt="${title}" loading="lazy" decoding="async">
-            <span class="icon-feed-overlay"><span class="icon-feed-play">▶</span><small>SHORT</small></span>
-          </button>
-          <div class="icon-feed-copy">
-            <span>ICON MEDIA · ${escapeHtml(date)}</span>
-            <h3>${title}</h3>
-          </div>
-        </article>
-      `;
+      const date = video.publishedAt ? new Intl.DateTimeFormat('es-MX', { day:'numeric', month:'short', year:'numeric' }).format(new Date(video.publishedAt)) : '';
+      return '<article class="icon-feed-card"><button class="icon-feed-video" type="button" data-feed-index="' + index + '" aria-label="Abrir Short: ' + title + '"><img src="' + escapeHtml(video.thumbnail) + '" alt="' + title + '" loading="lazy" decoding="async"><span class="icon-feed-overlay"><span class="icon-feed-play">▶</span><small>SHORT</small><em>VER</em></span></button><div class="icon-feed-copy"><span>ICON MEDIA · ' + escapeHtml(date) + '</span><h3>' + title + '</h3></div></article>';
     }).join('');
-
-    grid.querySelectorAll('.icon-feed-video').forEach(button => {
-      button.addEventListener('click', () => openIconVideo(button.dataset.videoId));
-    });
-
-    if (status) status.textContent = data.videos.length + ' Shorts recientes · actualización automática';
+    grid.querySelectorAll('.icon-feed-video').forEach(button => button.addEventListener('click', () => openIconVideo(Number(button.dataset.feedIndex))));
+    if (status) status.textContent = data.videos.length + ' Shorts recientes · toca una ficha para entrar al feed';
   } catch (error) {
     grid.innerHTML = '<div class="icon-feed-empty">No pudimos cargar los Shorts ahora. Intenta de nuevo en unos minutos.</div>';
     if (status) status.textContent = '';
@@ -363,38 +340,66 @@ async function initIconFeed() {
   }
 }
 
-function openIconVideo(videoId) {
-  if (!videoId) return;
-  let dialog = document.getElementById('iconVideoDialog');
+let iconFeedIndex = 0;
+let iconFeedMuted = true;
 
+function openIconVideo(index) {
+  const videos = window.ICON_FEED_VIDEOS || [];
+  if (!videos.length) return;
+  iconFeedIndex = Math.max(0, Math.min(index, videos.length - 1));
+  let dialog = document.getElementById('iconVideoDialog');
   if (!dialog) {
     dialog = document.createElement('dialog');
     dialog.id = 'iconVideoDialog';
     dialog.className = 'icon-video-dialog';
-    dialog.innerHTML = `
-      <div class="icon-video-modal">
-        <button class="icon-video-close" type="button" aria-label="Cerrar">×</button>
-        <div class="icon-video-frame"><iframe title="Short de ICON MEDIA" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
-      </div>
-    `;
+    dialog.innerHTML = '<div class="icon-video-modal"><button class="icon-video-close" type="button" aria-label="Cerrar">×</button><div class="icon-video-top"><span><b>ICON</b> FEED</span><button class="icon-video-sound" type="button" aria-label="Activar sonido">🔇</button></div><div class="icon-video-track"></div><button class="icon-video-prev" type="button" aria-label="Video anterior">↑</button><button class="icon-video-next" type="button" aria-label="Siguiente video">↓</button><div class="icon-video-hint">DESLIZA ↑ ↓</div></div>';
     document.body.appendChild(dialog);
-    dialog.querySelector('.icon-video-close').addEventListener('click', () => {
-      dialog.close();
-      dialog.querySelector('iframe').src = 'about:blank';
-    });
-    dialog.addEventListener('click', event => {
-      if (event.target === dialog) {
-        dialog.close();
-        dialog.querySelector('iframe').src = 'about:blank';
-      }
-    });
+    dialog.querySelector('.icon-video-close').addEventListener('click', closeIconVideo);
+    dialog.querySelector('.icon-video-sound').addEventListener('click', () => { iconFeedMuted = !iconFeedMuted; renderIconVideo(); });
+    dialog.querySelector('.icon-video-prev').addEventListener('click', () => changeIconVideo(-1));
+    dialog.querySelector('.icon-video-next').addEventListener('click', () => changeIconVideo(1));
+    let touchStartY = 0, touchStartX = 0;
+    dialog.addEventListener('touchstart', event => { touchStartY = event.changedTouches[0].clientY; touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+    dialog.addEventListener('touchend', event => { const dy = event.changedTouches[0].clientY - touchStartY; const dx = event.changedTouches[0].clientX - touchStartX; if (Math.abs(dy) > 55 && Math.abs(dy) > Math.abs(dx)) changeIconVideo(dy < 0 ? 1 : -1); }, { passive: true });
+    dialog.addEventListener('wheel', event => { if (Math.abs(event.deltaY) > 20) { event.preventDefault(); changeIconVideo(event.deltaY > 0 ? 1 : -1); } }, { passive: false });
+    dialog.addEventListener('click', event => { if (event.target === dialog) closeIconVideo(); });
   }
-
-  const iframe = dialog.querySelector('iframe');
-  iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&playsinline=1&rel=0';
-  if (typeof dialog.showModal === 'function') dialog.showModal();
+  iconFeedMuted = true;
+  renderIconVideo();
+  if (typeof dialog.showModal === 'function' && !dialog.open) dialog.showModal();
 }
 
+function renderIconVideo() {
+  const dialog = document.getElementById('iconVideoDialog');
+  const videos = window.ICON_FEED_VIDEOS || [];
+  if (!dialog || !videos[iconFeedIndex]) return;
+  const video = videos[iconFeedIndex];
+  const track = dialog.querySelector('.icon-video-track');
+  const sound = dialog.querySelector('.icon-video-sound');
+  const safeTitle = String(video.title || 'Short de ICON MEDIA').replace(/"/g, '&quot;');
+  const mute = iconFeedMuted ? '1' : '0';
+  track.innerHTML = '<div class="icon-video-slide"><iframe title="' + safeTitle + '" src="https://www.youtube.com/embed/' + encodeURIComponent(video.id) + '?autoplay=1&mute=' + mute + '&playsinline=1&controls=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe><div class="icon-video-caption"><small>ICON MEDIA · ' + (iconFeedIndex + 1) + ' / ' + videos.length + '</small><strong>' + safeTitle + '</strong></div></div>';
+  sound.textContent = iconFeedMuted ? '🔇' : '🔊';
+  sound.setAttribute('aria-label', iconFeedMuted ? 'Activar sonido' : 'Silenciar');
+  dialog.querySelector('.icon-video-prev').disabled = iconFeedIndex === 0;
+  dialog.querySelector('.icon-video-next').disabled = iconFeedIndex === videos.length - 1;
+}
+
+function changeIconVideo(step) {
+  const videos = window.ICON_FEED_VIDEOS || [];
+  const next = iconFeedIndex + step;
+  if (next < 0 || next >= videos.length) return;
+  iconFeedIndex = next;
+  renderIconVideo();
+}
+
+function closeIconVideo() {
+  const dialog = document.getElementById('iconVideoDialog');
+  if (!dialog) return;
+  const track = dialog.querySelector('.icon-video-track');
+  if (track) track.innerHTML = '';
+  if (dialog.open) dialog.close();
+}
 initIconFeed();
 
 if ('serviceWorker' in navigator) {
