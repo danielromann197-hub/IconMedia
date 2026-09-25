@@ -378,7 +378,7 @@ function renderIconVideo() {
   const sound = dialog.querySelector('.icon-video-sound');
   const safeTitle = String(video.title || 'Short de ICON MEDIA').replace(/"/g, '&quot;');
   const mute = iconFeedMuted ? '1' : '0';
-  track.innerHTML = '<div class="icon-video-slide"><iframe title="' + safeTitle + '" src="https://www.youtube.com/embed/' + encodeURIComponent(video.id) + '?autoplay=1&mute=' + mute + '&playsinline=1&controls=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe><div class="icon-video-caption"><small>ICON MEDIA · ' + (iconFeedIndex + 1) + ' / ' + videos.length + '</small><strong>' + safeTitle + '</strong></div></div>';
+  track.innerHTML = '<div class="icon-video-slide"><iframe title="' + safeTitle + '" src="https://www.youtube.com/embed/' + encodeURIComponent(video.id) + '?autoplay=1&mute=' + mute + '&playsinline=1&controls=1&rel=0&iv_load_policy=3" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>';
   sound.textContent = iconFeedMuted ? '🔇' : '🔊';
   sound.setAttribute('aria-label', iconFeedMuted ? 'Activar sonido' : 'Silenciar');
   dialog.querySelector('.icon-video-prev').disabled = iconFeedIndex === 0;
