@@ -68,3 +68,21 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   .announcement .live-dot{width:6px;height:6px;flex:none}
   .announcement .top-social{display:none}
 }
+
+
+/* iOS installed PWA: safe area is handled once by the page, never by both top bars. */
+@media (display-mode:standalone) and (max-width:650px){
+  body{padding-top:env(safe-area-inset-top,0px)}
+  .announcement{
+    height:24px !important;
+    min-height:24px !important;
+    padding:0 12px !important;
+    margin:0 !important;
+  }
+  .site-header{
+    position:sticky !important;
+    top:0 !important;
+    height:80px !important;
+    padding-top:0 !important;
+  }
+}
