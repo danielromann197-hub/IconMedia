@@ -86,3 +86,46 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
     padding-top:0 !important;
   }
 }
+
+
+/* ICON FEED — YouTube Shorts */
+.icon-feed-section{padding:76px 0 10px}
+.icon-feed-head{display:flex;align-items:end;justify-content:space-between;gap:30px}
+.icon-feed-head>div{max-width:760px}
+.icon-feed-head .eyebrow{display:block;margin-bottom:10px;color:#111;font-size:11px;font-weight:900;letter-spacing:.12em}
+.icon-feed-head h2{margin:0 0 10px;font-size:clamp(38px,4.5vw,58px);line-height:.9;letter-spacing:-.065em}
+.icon-feed-head p{margin:0;color:#666;font-size:15px}
+.icon-feed-head>a{flex:none;color:#111;font-weight:900;text-decoration:none}
+.icon-feed-viewport{margin-top:28px;overflow-x:auto;overflow-y:hidden;padding:3px 2px 14px;scrollbar-width:thin}
+.icon-feed-grid{display:grid;grid-template-columns:repeat(6,minmax(180px,1fr));gap:16px;min-width:1120px}
+.icon-feed-card{min-width:0}
+.icon-feed-video{position:relative;display:block;width:100%;aspect-ratio:9/16;border:0;padding:0;border-radius:16px;overflow:hidden;background:#111;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.1)}
+.icon-feed-video img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .35s ease,filter .35s ease}
+.icon-feed-video:hover img{transform:scale(1.035);filter:brightness(.78)}
+.icon-feed-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.45));opacity:.95}
+.icon-feed-play{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;padding-left:3px;background:var(--accent);color:#000;font-size:17px;box-shadow:0 8px 25px rgba(0,0,0,.25)}
+.icon-feed-overlay small{position:absolute;left:10px;top:10px;padding:5px 7px;border-radius:999px;background:#fff;color:#000;font-size:8px;font-weight:900;letter-spacing:.08em}
+.icon-feed-copy{padding:11px 2px 0}
+.icon-feed-copy>span{display:block;color:#888;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.icon-feed-copy h3{margin:0;font-size:15px;line-height:1.05;letter-spacing:-.025em}
+.icon-feed-status{margin-top:5px;color:#888;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.icon-feed-loading,.icon-feed-empty{padding:50px 20px;border:1px dashed #ccc;border-radius:16px;text-align:center;color:#777;font-size:13px}
+.icon-feed-grid>.icon-feed-loading,.icon-feed-grid>.icon-feed-empty{grid-column:1/-1}
+.icon-video-dialog{width:min(92vw,520px);max-width:none;height:min(92vh,900px);max-height:none;padding:0;border:0;border-radius:22px;background:#000;overflow:hidden}
+.icon-video-dialog::backdrop{background:rgba(0,0,0,.78)}
+.icon-video-modal{position:relative;width:100%;height:100%;display:grid;place-items:center;background:#000}
+.icon-video-frame{width:100%;height:100%;display:grid;place-items:center}
+.icon-video-frame iframe{width:100%;height:100%;border:0}
+.icon-video-close{position:absolute;z-index:3;right:10px;top:10px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:#000;font-size:25px;line-height:1;cursor:pointer}
+@media(max-width:650px){
+  .icon-feed-section{padding:58px 0 8px}
+  .icon-feed-head{align-items:start;display:block}
+  .icon-feed-head h2{font-size:36px}
+  .icon-feed-head p{font-size:13px;line-height:1.35}
+  .icon-feed-head>a{display:inline-block;margin-top:13px;font-size:12px}
+  .icon-feed-viewport{margin-left:-2px;margin-right:-2px}
+  .icon-feed-grid{grid-template-columns:repeat(6,155px);gap:12px;min-width:998px}
+  .icon-feed-video{border-radius:14px}
+  .icon-feed-copy h3{font-size:14px}
+  .icon-video-dialog{width:92vw;height:82vh;border-radius:18px}
+}
