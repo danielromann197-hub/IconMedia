@@ -165,3 +165,17 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   .icon-video-close{top:max(62px,calc(env(safe-area-inset-top,0px) + 50px))}
   .icon-video-caption{bottom:max(22px,calc(env(safe-area-inset-bottom,0px) + 18px));left:18px;right:64px}
 }
+
+
+/* ICON LOOP — primary top access */
+.icon-loop-button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 13px;border:1px solid #111;border-radius:999px;background:#0d0d0d;color:#fff;cursor:pointer;box-shadow:0 5px 16px rgba(0,0,0,.12);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.icon-loop-button:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(0,0,0,.18);background:#171717}
+.icon-loop-signal{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#000;font-size:9px;padding-left:1px}
+.icon-loop-button strong{font-size:10px;letter-spacing:.08em}
+.icon-loop-button small{font-size:7px;font-weight:900;letter-spacing:.12em;color:#aaa}
+@media(max-width:1100px){.icon-loop-button small{display:none}.icon-loop-button{padding:0 11px}}
+@media(max-width:650px){
+  .site-header .icon-loop-button{min-width:42px;width:42px;height:42px;padding:0;justify-content:center;gap:0;border-color:#222}
+  .icon-loop-button strong,.icon-loop-button small{display:none}
+  .icon-loop-signal{width:24px;height:24px}
+}
