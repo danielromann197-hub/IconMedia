@@ -3,7 +3,7 @@
   "short_name": "ICON",
   "description": "Lo que está pasando en internet, cultura pop, música, famosos y tendencias.",
   "lang": "es-MX",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -12,7 +12,7 @@
   "categories": ["news", "entertainment"],
   "icons": [
     {
-      "src": "Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=5",
+      "src": "Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=12",
       "sizes": "1254x1254",
       "type": "image/png",
       "purpose": "any maskable"
