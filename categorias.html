@@ -8,32 +8,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=10" />
   <style>
     .category-page{padding:72px 0 110px}.category-intro{max-width:900px;border-bottom:1px solid var(--ink);padding-bottom:44px}.category-intro h1{font-family:'Space Grotesk';font-size:clamp(58px,9vw,112px);line-height:.88;letter-spacing:-.08em;margin:20px 0}.category-intro p{font-size:18px;color:#666;max-width:620px}.category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px}.category-card{min-height:260px;border-radius:var(--radius);background:var(--black);color:var(--white);padding:28px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s,background .25s}.category-card:hover{transform:translateY(-4px);background:#111}.category-card:nth-child(2),.category-card:nth-child(5){background:var(--accent);color:var(--black)}.category-card small{font-size:10px;font-weight:800;letter-spacing:.12em}.category-card h2{font-family:'Space Grotesk';font-size:clamp(36px,5vw,58px);letter-spacing:-.06em;line-height:.9;margin:0}.category-card span{font-size:24px}.category-back{display:inline-flex;margin-top:40px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}@media(max-width:600px){.category-page{padding-top:42px}.category-grid{grid-template-columns:1fr}.category-card{min-height:220px}}
+  
+    .category-results{margin-top:48px;display:grid;gap:12px}.category-story{display:grid;grid-template-columns:220px 1fr 42px;gap:22px;align-items:center;border-top:1px solid #ccc;padding:14px 0}.category-story-image{height:150px;border-radius:12px;background-size:cover;background-position:center;position:relative;overflow:hidden}.category-story-image span{position:absolute;left:12px;top:12px;background:#fff;color:#000;border-radius:999px;padding:5px 8px;font-size:8px;font-weight:800}.category-story small{font-size:8px;font-weight:800;color:#777;letter-spacing:.08em}.category-story h3{font-family:"Space Grotesk";font-size:28px;line-height:1;letter-spacing:-.045em;margin:8px 0}.category-story p{font-size:12px;color:#666;max-width:650px}.category-story>strong{width:38px;height:38px;border-radius:50%;background:#000;color:#fff;display:grid;place-items:center}.category-empty{border:1px dashed #aaa;padding:35px;font-weight:700}@media(max-width:600px){.category-story{grid-template-columns:1fr;gap:10px}.category-story-image{height:230px}.category-story h3{font-size:25px}.category-story>strong{display:none}}
   </style>
 </head>
 <body>
   <div class="announcement"><span class="live-dot"></span> ICON NOW · LO QUE ESTÁ PASANDO AHORA</div>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="ICON Media">ICON<span>.</span></a>
+    <a class="brand-logo-button" href="index.html" aria-label="ICON Media"><img src="Emblema%20Circular%20ICON%20MEDIA%20Ne%C3%B3n(2).png?v=12" alt="ICON MEDIA"></a>
     <nav class="desktop-nav" aria-label="Principal"><a href="index.html#latest">Lo último</a><a href="index.html#trending">Trending</a><a href="categorias.html">Categorías</a></nav>
     <a class="search-button" href="index.html" aria-label="Volver">←</a>
   </header>
   <main class="category-page container">
     <div class="category-intro"><span class="eyebrow accent">ICON MEDIA</span><h1>¿Qué quieres ver?</h1><p>Elige tu rabbit hole. Creadores, música, gaming, internet, series y todo eso que termina apareciendo en tu feed.</p></div>
     <div class="category-grid">
-      <a class="category-card" href="index.html#latest"><small>01 · CULTURA POP</small><h2>FAMOSOS</h2><span>💅</span></a>
-      <a class="category-card" href="index.html#latest"><small>02 · SONIDO</small><h2>MÚSICA</h2><span>🎧</span></a>
-      <a class="category-card" href="index.html#trending"><small>03 · INTERNET</small><h2>VIRAL</h2><span>📱</span></a>
-      <a class="category-card" href="index.html#latest"><small>04 · PANTALLA</small><h2>SERIES</h2><span>🎬</span></a>
-      <a class="category-card" href="index.html#latest"><small>05 · ESTILO</small><h2>TENDENCIAS</h2><span>✨</span></a>
-      <a class="category-card" href="index.html#trending"><small>06 · TODO LO DEMÁS</small><h2>INTERNET</h2><span>🌐</span></a>
+      <a class="category-card" data-category="FAMOSOS" href="categorias.html?category=FAMOSOS"><small>01 · 0 NOTAS</small><h2>FAMOSOS</h2><span>💅</span></a>
+      <a class="category-card" data-category="MÚSICA" href="categorias.html?category=M%C3%9ASICA"><small>02 · 0 NOTAS</small><h2>MÚSICA</h2><span>🎧</span></a>
+      <a class="category-card" data-category="VIRAL" href="categorias.html?category=VIRAL"><small>03 · 0 NOTAS</small><h2>VIRAL</h2><span>📱</span></a>
+      <a class="category-card" data-category="SERIES" href="categorias.html?category=SERIES"><small>04 · 0 NOTAS</small><h2>SERIES</h2><span>🎬</span></a>
+      <a class="category-card" data-category="TENDENCIAS" href="categorias.html?category=TENDENCIAS"><small>05 · 0 NOTAS</small><h2>TENDENCIAS</h2><span>✨</span></a>
+      <a class="category-card" data-category="INTERNET" href="categorias.html?category=INTERNET"><small>06 · 0 NOTAS</small><h2>INTERNET</h2><span>🌐</span></a>
     </div>
+    <section id="categoryResults" class="category-results" aria-live="polite"></section>
     <a class="category-back" href="index.html">← Volver a ICON</a>
   </main>
   <footer class="footer container"><div class="footer-brand">ICON<span>.</span></div><p>Lo que está pasando.</p><div class="footer-links"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Contacto</a></div><small>© 2026 ICON MEDIA</small></footer>
-  <script src="news-data.js?v=2"></script>
-  <script src="script.js?v=7"></script>
+  <script src="news-data.js?v=5"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
