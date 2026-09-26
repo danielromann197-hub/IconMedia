@@ -28,7 +28,9 @@ async function getFromApi(key) {
   const channelData = await channelResponse.json();
 
   if (!channelResponse.ok || !channelData.items?.length) {
-    throw new Error(channelData.error?.message || "No se encontró el canal de ICON MEDIA en YouTube.");
+    const error = new Error(channelData.error?.message || "No se encontró el canal de ICON MEDIA en YouTube.");
+    error.code = channelData.error?.errors?.[0]?.reason || channelData.error?.status || "CHANNEL_LOOKUP_FAILED";
+    throw error;
   }
 
   const uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
@@ -44,7 +46,9 @@ async function getFromApi(key) {
   const playlistData = await playlistResponse.json();
 
   if (!playlistResponse.ok) {
-    throw new Error(playlistData.error?.message || "YouTube no pudo devolver los videos.");
+    const error = new Error(playlistData.error?.message || "YouTube no pudo devolver los videos.");
+    error.code = playlistData.error?.errors?.[0]?.reason || playlistData.error?.status || "PLAYLIST_LOOKUP_FAILED";
+    throw error;
   }
 
   return (playlistData.items || []).map(item => {
