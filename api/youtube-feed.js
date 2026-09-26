@@ -16,40 +16,6 @@ async function getChannelIdFromPublicPage() {
   return match[1];
 }
 
-async function getFromRss() {
-  const channelId = await getChannelIdFromPublicPage();
-  const rssResponse = await fetch("https://www.youtube.com/feeds/videos.xml?channel_id=" + encodeURIComponent(channelId), {
-    headers: { "User-Agent": "Mozilla/5.0" }
-  });
-  if (!rssResponse.ok) throw new Error("No se pudo consultar el feed público de YouTube.");
-
-  const xml = await rssResponse.text();
-  const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
-
-  const decode = value => value
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
-
-  return entries.map(match => {
-    const entry = match[1];
-    const id = entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1];
-    const title = entry.match(/<title>([\s\S]*?)<\/title>/)?.[1];
-    const publishedAt = entry.match(/<published>([^<]+)<\/published>/)?.[1];
-    if (!id) return null;
-
-    return {
-      id,
-      title: title ? decode(title) : "Short de ICON MEDIA",
-      publishedAt: publishedAt || "",
-      thumbnail: "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg",
-      url: "https://www.youtube.com/shorts/" + id
-    };
-  }).filter(Boolean);
-}
-
 async function getFromApi(key) {
   const channelUrl = new URL("https://www.googleapis.com/youtube/v3/channels");
   channelUrl.search = new URLSearchParams({
@@ -97,26 +63,33 @@ async function getFromApi(key) {
 
 export default async function handler(req, res) {
   try {
-    let videos = [];
-    let source = "rss";
+    const key = process.env.YOUTUBE_API_KEY;
 
-    if (process.env.YOUTUBE_API_KEY) {
-      try {
-        videos = await getFromApi(process.env.YOUTUBE_API_KEY);
-        source = "youtube-api";
-      } catch (apiError) {
-        console.warn("YouTube Data API falló; usando feed público:", apiError.message);
-      }
+    if (!key) {
+      return res.status(500).json({
+        error: "Falta YOUTUBE_API_KEY en Vercel.",
+        code: "MISSING_API_KEY"
+      });
     }
 
-    if (!videos.length) videos = await getFromRss();
+    let videos;
+    try {
+      videos = await getFromApi(key);
+    } catch (apiError) {
+      console.error("ICON FEED YouTube API:", apiError.message);
+      return res.status(502).json({
+        error: "YouTube Data API rechazó la consulta.",
+        code: apiError.code || "YOUTUBE_API_ERROR",
+        details: apiError.message
+      });
+    }
 
     res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
-    return res.status(200).json({ channel: "@iconmediamx", source, videos });
+    return res.status(200).json({ channel: "@iconmediamx", source: "youtube-api", videos });
   } catch (error) {
     console.error("ICON FEED:", error);
-    return res.status(502).json({
-      error: "No pudimos leer los Shorts de @iconmediamx.",
+    return res.status(500).json({
+      error: "Error interno de ICON LOOP.",
       details: error.message
     });
   }
