@@ -526,5 +526,5 @@ initIconFeed();
 initIconLoopButton();
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js?v=6', { updateViaCache: 'none' }).then(registration => registration.update().catch(() => {})).catch(() => {}); });
+  window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js?v=7', { updateViaCache: 'none' }).then(registration => registration.update().catch(() => {})).catch(() => {}); });
 }
