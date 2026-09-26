@@ -386,10 +386,14 @@ function openIconVideo(index) {
     dialog.querySelector('.icon-video-sound').addEventListener('click', toggleIconVideoAudio);
     dialog.querySelector('.icon-video-prev').addEventListener('click', () => changeIconVideo(-1));
     dialog.querySelector('.icon-video-next').addEventListener('click', () => changeIconVideo(1));
-    let touchStartY = 0, touchStartX = 0;
-    dialog.addEventListener('touchstart', event => { touchStartY = event.changedTouches[0].clientY; touchStartX = event.changedTouches[0].clientX; }, { passive: true });
-    dialog.addEventListener('touchend', event => { const dy = event.changedTouches[0].clientY - touchStartY; const dx = event.changedTouches[0].clientX - touchStartX; if (Math.abs(dy) > 55 && Math.abs(dy) > Math.abs(dx)) changeIconVideo(dy < 0 ? 1 : -1); }, { passive: true });
-    dialog.addEventListener('wheel', event => { if (Math.abs(event.deltaY) > 20) { event.preventDefault(); changeIconVideo(event.deltaY > 0 ? 1 : -1); } }, { passive: false });
+    let wheelLocked = false;
+    dialog.addEventListener('wheel', event => {
+      if (Math.abs(event.deltaY) <= 20 || wheelLocked) return;
+      event.preventDefault();
+      wheelLocked = true;
+      changeIconVideo(event.deltaY > 0 ? 1 : -1);
+      window.setTimeout(() => { wheelLocked = false; }, 520);
+    }, { passive: false });
     dialog.addEventListener('click', event => { if (event.target === dialog) closeIconVideo(); });
   }
   // No reiniciamos el estado del audio al abrir/cambiar el visor.
@@ -416,6 +420,38 @@ function renderIconVideo() {
   track.innerHTML = '<div class="icon-video-slide"><iframe title="' + safeTitle +
     '" src="' + iframeSrc +
     '" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>';
+
+  let gesture = track.querySelector('.icon-video-gesture');
+  if (!gesture) {
+    gesture = document.createElement('div');
+    gesture.className = 'icon-video-gesture';
+    gesture.setAttribute('aria-hidden', 'true');
+    track.appendChild(gesture);
+
+    let touchStartY = 0;
+    let touchStartX = 0;
+    let touchLocked = false;
+
+    gesture.addEventListener('touchstart', event => {
+      if (touchLocked) return;
+      const touch = event.changedTouches[0];
+      touchStartY = touch.clientY;
+      touchStartX = touch.clientX;
+    }, { passive: true });
+
+    gesture.addEventListener('touchend', event => {
+      if (touchLocked) return;
+      const touch = event.changedTouches[0];
+      const dy = touch.clientY - touchStartY;
+      const dx = touch.clientX - touchStartX;
+
+      if (Math.abs(dy) < 55 || Math.abs(dy) <= Math.abs(dx)) return;
+
+      touchLocked = true;
+      changeIconVideo(dy < 0 ? 1 : -1);
+      window.setTimeout(() => { touchLocked = false; }, 520);
+    }, { passive: true });
+  }
 
   const iframe = track.querySelector('iframe');
   if (iframe && !iconFeedMuted) {
