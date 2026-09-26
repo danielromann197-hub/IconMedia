@@ -368,7 +368,8 @@ async function initIconFeed() {
 }
 
 let iconFeedIndex = 0;
-let iconFeedMuted = true;
+// Intentamos entrar con sonido. En móviles el navegador puede bloquear autoplay con audio.
+let iconFeedMuted = false;
 
 function openIconVideo(index) {
   const videos = window.ICON_FEED_VIDEOS || [];
@@ -382,7 +383,7 @@ function openIconVideo(index) {
     dialog.innerHTML = '<div class="icon-video-modal"><button class="icon-video-close" type="button" aria-label="Cerrar">×</button><div class="icon-video-top"><span><b>ICON</b> FEED</span><button class="icon-video-sound" type="button" aria-label="Activar sonido">🔇</button></div><div class="icon-video-track"></div><button class="icon-video-prev" type="button" aria-label="Video anterior">↑</button><button class="icon-video-next" type="button" aria-label="Siguiente video">↓</button><div class="icon-video-hint">DESLIZA ↑ ↓</div></div>';
     document.body.appendChild(dialog);
     dialog.querySelector('.icon-video-close').addEventListener('click', closeIconVideo);
-    dialog.querySelector('.icon-video-sound').addEventListener('click', () => { iconFeedMuted = !iconFeedMuted; renderIconVideo(); });
+    dialog.querySelector('.icon-video-sound').addEventListener('click', toggleIconVideoAudio);
     dialog.querySelector('.icon-video-prev').addEventListener('click', () => changeIconVideo(-1));
     dialog.querySelector('.icon-video-next').addEventListener('click', () => changeIconVideo(1));
     let touchStartY = 0, touchStartX = 0;
@@ -391,7 +392,7 @@ function openIconVideo(index) {
     dialog.addEventListener('wheel', event => { if (Math.abs(event.deltaY) > 20) { event.preventDefault(); changeIconVideo(event.deltaY > 0 ? 1 : -1); } }, { passive: false });
     dialog.addEventListener('click', event => { if (event.target === dialog) closeIconVideo(); });
   }
-  iconFeedMuted = true;
+  // No reiniciamos el estado del audio al abrir/cambiar el visor.
   renderIconVideo();
   if (typeof dialog.showModal === 'function' && !dialog.open) dialog.showModal();
 }
@@ -400,18 +401,61 @@ function renderIconVideo() {
   const dialog = document.getElementById('iconVideoDialog');
   const videos = window.ICON_FEED_VIDEOS || [];
   if (!dialog || !videos[iconFeedIndex]) return;
+
   const video = videos[iconFeedIndex];
   const track = dialog.querySelector('.icon-video-track');
   const sound = dialog.querySelector('.icon-video-sound');
   const safeTitle = String(video.title || 'Short de ICON MEDIA').replace(/"/g, '&quot;');
-  const mute = iconFeedMuted ? '1' : '0';
-  track.innerHTML = '<div class="icon-video-slide"><iframe title="' + safeTitle + '" src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(video.id) + '?autoplay=1&mute=' + mute + '&playsinline=1&controls=1&rel=0&iv_load_policy=3&origin=' + encodeURIComponent(window.location.origin) + '" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>';
+  const iframeSrc = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(video.id) +
+    '?autoplay=1&mute=' + (iconFeedMuted ? '1' : '0') +
+    '&playsinline=1&controls=1&rel=0&iv_load_policy=3&enablejsapi=1&origin=' +
+    encodeURIComponent(window.location.origin);
+
+  // Solo recreamos el iframe al cambiar de Short. El botón de audio usa
+  // postMessage para no recargar el video ni dejarlo en Play.
+  track.innerHTML = '<div class="icon-video-slide"><iframe title="' + safeTitle +
+    '" src="' + iframeSrc +
+    '" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>';
+
+  const iframe = track.querySelector('iframe');
+  if (iframe && !iconFeedMuted) {
+    iframe.addEventListener('load', () => {
+      sendYouTubeCommand('unMute');
+      sendYouTubeCommand('playVideo');
+    }, { once: true });
+  }
+
   sound.textContent = iconFeedMuted ? '🔇' : '🔊';
   sound.setAttribute('aria-label', iconFeedMuted ? 'Activar sonido' : 'Silenciar');
   dialog.querySelector('.icon-video-prev').disabled = iconFeedIndex === 0;
   dialog.querySelector('.icon-video-next').disabled = iconFeedIndex === videos.length - 1;
 }
 
+function sendYouTubeCommand(command) {
+  const iframe = document.querySelector('#iconVideoDialog .icon-video-track iframe');
+  if (!iframe?.contentWindow) return;
+
+  iframe.contentWindow.postMessage(JSON.stringify({
+    event: 'command',
+    func: command,
+    args: []
+  }), 'https://www.youtube-nocookie.com');
+}
+
+function toggleIconVideoAudio() {
+  iconFeedMuted = !iconFeedMuted;
+
+  // No reconstruimos el iframe. YouTube cambia el audio y el Short sigue
+  // reproduciéndose en la misma instancia.
+  sendYouTubeCommand(iconFeedMuted ? 'mute' : 'unMute');
+  sendYouTubeCommand('playVideo');
+
+  const sound = document.querySelector('.icon-video-sound');
+  if (sound) {
+    sound.textContent = iconFeedMuted ? '🔇' : '🔊';
+    sound.setAttribute('aria-label', iconFeedMuted ? 'Activar sonido' : 'Silenciar');
+  }
+}
 function changeIconVideo(step) {
   const videos = window.ICON_FEED_VIDEOS || [];
   const next = iconFeedIndex + step;
