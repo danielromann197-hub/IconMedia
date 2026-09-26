@@ -187,3 +187,24 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 .icon-feed-video.is-playing img{display:none}
 .icon-feed-video iframe{width:100%;height:100%;display:block;border:0;pointer-events:none}
 .icon-feed-auto-badge{position:absolute;z-index:3;left:10px;bottom:10px;padding:6px 8px;border-radius:999px;background:rgba(0,0,0,.68);color:#fff;font-size:8px;font-weight:900;letter-spacing:.08em;pointer-events:none}
+
+
+/* ICON LOOP — navegación tipo TikTok/Reels */
+.icon-video-gesture{
+  display:none;
+  position:absolute;
+  z-index:4;
+  inset:0 0 90px 0;
+  background:transparent;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+@media(max-width:650px){
+  .icon-video-gesture{
+    display:block;
+  }
+  .icon-video-slide{
+    touch-action:none;
+  }
+}
