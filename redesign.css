@@ -365,3 +365,70 @@ main{background:#f5f5f1!important;color:#0d0d0d!important}
 .editorial-card-media{background-color:#ddd!important}
 .article-page,.article-page .article-top,.article-body{color:#0d0d0d!important}.article-page{background:#f5f5f1!important}.article-top h1,.article-deck{color:#0d0d0d!important}.article-deck{color:#555!important}.article-meta-row{border-color:#aaa!important}.article-body p{color:#222!important}.article-body h2{color:#0d0d0d!important}
 @media(max-width:650px){.hero-feature-info{padding:26px 20px 22px!important}.hero-feature-info h2{font-size:clamp(30px,9vw,42px)!important}.hero-feature-info p{font-size:12px!important;line-height:1.4!important}.editorial-card:not(.featured){border-left:0;border-right:0}}
+
+/* ICON MEDIA — DARK EDITORIAL MODE + MOTION */
+:root{--icon-bg:#0b0b0b;--icon-panel:#111;--icon-text:#f7f7f2;--icon-muted:#a7a7a2;--icon-line:#2b2b2b;--icon-acid:#c6ff00}
+html,body{background:var(--icon-bg)!important;color:var(--icon-text)!important}
+main{background:var(--icon-bg)!important;color:var(--icon-text)!important}
+body:before{opacity:.018!important;background-image:radial-gradient(#fff 1px,transparent 1px)!important;mix-blend-mode:screen}
+.icon-hero{background:var(--icon-bg)!important}
+.icon-hero .hero-copy{background:#0b0b0b!important;color:#fff!important}
+.hero-feature{background:#111!important;color:#fff!important}
+.hero-feature-media{filter:saturate(.9) contrast(1.02);transform:scale(1.001);transition:transform 900ms cubic-bezier(.2,.7,.2,1),filter 500ms ease}
+.hero-feature:hover .hero-feature-media{transform:scale(1.035);filter:saturate(1.05) contrast(1.04)}
+.hero-feature-overlay{background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.02) 32%,rgba(0,0,0,.72) 62%,rgba(0,0,0,.98) 100%)!important}
+.hero-feature-info{padding:34px 34px 32px!important;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.74) 25%,rgba(0,0,0,.97) 100%)!important}
+.hero-feature-info h2{color:#fff!important;max-width:780px!important;font-size:clamp(32px,3.25vw,53px)!important;line-height:.94!important;letter-spacing:-.055em!important;margin:12px 0!important}
+.hero-feature-info p{color:#e3e3de!important;font-size:13px!important;line-height:1.45!important;max-width:670px!important}
+.hero-feature-info .read-more{color:#fff!important}
+.signal-strip{background:#111!important;color:#fff!important;border-top:1px solid #222;border-bottom:1px solid #222}
+.section,.editorial-zone,.editorial-radar,.identity-zone,.recent-zone{background:var(--icon-bg)!important;color:#fff!important}
+.section-head{border-color:#333!important}
+.section-head h2,.section-head a{color:#fff!important}
+.eyebrow{color:#999!important}.editorial-head .eyebrow,.radar-title .eyebrow{color:var(--icon-acid)!important}
+.editorial-grid{background:#222!important}
+.editorial-card:not(.featured){background:#111!important;color:#fff!important;border:0!important}
+.editorial-card:not(.featured) h3{color:#fff!important}
+.editorial-card:not(.featured) p{color:#a5a5a0!important}
+.editorial-card.featured{background:#111!important}
+.editorial-card.featured h3{color:#fff!important}.editorial-card.featured p{color:#ccc!important}
+.card-meta{color:#777!important}
+.radar-title,.radar-title h2,.radar-list,.radar-item,.radar-item h3{color:#fff!important}
+.radar-list{border-color:#333!important}.radar-item{border-color:#333!important}.radar-item .num,.radar-item small{color:#888!important}
+.identity-grid{border-color:#333!important}.identity-grid a{color:#fff!important;border-color:#333!important}.identity-grid span{color:#999!important}.identity-grid a:hover{background:var(--icon-acid)!important;color:#0b0b0b!important}.identity-grid a:hover span{color:#222!important}
+.recent-card h3{color:#fff!important}.recent-card p{color:#999!important}
+.loop-banner{background:#050505!important;color:#fff!important;border-top:1px solid #222;border-bottom:1px solid #222}
+.loop-banner p{color:#999!important}
+.manifesto{background:#050505!important;color:#fff!important}
+.footer{background:#050505!important;color:#fff!important}
+.footer p,.footer small{color:#777!important}
+.article-page{background:var(--icon-bg)!important;color:#fff!important}.article-top h1,.article-body h2{color:#fff!important}.article-deck{color:#aaa!important}.article-body{color:#ddd!important}.article-body p{color:#d4d4d0!important}.article-meta-row{border-color:#333!important}
+.article-note{background:#111!important;color:#ccc!important;border-color:var(--icon-acid)!important}
+.site-header{background:rgba(11,11,11,.92)!important;color:#fff!important;border-color:#2a2a2a!important}
+.desktop-nav a{color:#ddd!important}.desktop-nav a:hover{color:var(--icon-acid)!important}
+.search-button{background:#111!important;color:#fff!important;border-color:#444!important}.search-button em{color:#888!important}
+.icon-loop-button{background:#111!important;color:#fff!important;border-color:#444!important}
+.icon-hero .primary-cta{transition:transform .2s ease,box-shadow .2s ease}.icon-hero .primary-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(198,255,0,.16)}
+/* entrance motion */
+@keyframes iconFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes iconFadeRight{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:translateX(0)}}
+@keyframes iconReveal{from{opacity:0;transform:scale(1.025)}to{opacity:1;transform:scale(1)}}
+@keyframes iconPulse{0%,100%{opacity:1}50%{opacity:.45}}
+.icon-hero .hero-copy{animation:iconFadeRight .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-feature{animation:iconReveal 1s cubic-bezier(.2,.7,.2,1) .08s both}
+.signal-strip{animation:iconFadeUp .6s ease .25s both}
+.editorial-zone,.editorial-radar,.loop-banner,.identity-zone,.recent-zone,.manifesto{animation:iconFadeUp .7s ease both}
+.editorial-card,.radar-item,.identity-grid a,.recent-card{transition:transform .28s ease,background-color .28s ease,border-color .28s ease}
+.editorial-card:not(.featured):hover{transform:translateY(-5px)}
+.radar-item:hover{background:#111;padding-left:10px;padding-right:10px}
+.recent-card:hover{transform:translateY(-5px)}
+.identity-grid a:hover{transform:translateY(-3px)}
+.icon-loop-signal{animation:iconPulse 1.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+@media(max-width:650px){
+  .hero-feature-info{padding:24px 20px 20px!important}
+  .hero-feature-info h2{font-size:clamp(29px,8.8vw,40px)!important;line-height:.96!important}
+  .hero-feature-info p{font-size:12px!important}
+}
