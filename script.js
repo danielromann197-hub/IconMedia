@@ -29,52 +29,56 @@ function renderHome() {
   if (!window.ICON_NEWS) return;
   const news = window.ICON_NEWS;
   const featured = news.find(item => item.featured) || news[0];
-  const hero = document.querySelector('.hero');
 
-  if (hero) {
-    const heroImage = hero.querySelector('.hero-image');
-    const heroTitle = hero.querySelector('h1');
-    const heroDesc = hero.querySelector('.hero-copy > p');
-    const heroMeta = hero.querySelector('.meta');
-
-    if (heroImage) {
-      heroImage.style.backgroundImage = `linear-gradient(90deg,rgba(5,5,5,.9) 0%,rgba(5,5,5,.5) 30%,rgba(5,5,5,0) 65%), url("${featured.image}")`;
-      heroImage.href = articleUrl(featured);
-      heroImage.querySelector('.hero-category').textContent = featured.category;
-    }
-    if (heroTitle) heroTitle.innerHTML = `${featured.homeTitle || featured.title} <span>👀</span>`;
-    if (heroDesc) heroDesc.textContent = featured.deck;
-    if (heroMeta) heroMeta.innerHTML = `<span>${featured.author.toUpperCase()}</span><span>·</span><span>${featured.time}</span>`;
-    hero.querySelector('.primary-cta')?.setAttribute('href', articleUrl(featured));
+  const hero = document.getElementById('homeHeroFeature');
+  if (hero && featured) {
+    hero.href = articleUrl(featured);
+    hero.querySelector('.hero-feature-media').style.backgroundImage = `url("${featured.image}")`;
+    hero.querySelector('.category').textContent = featured.category;
+    hero.querySelector('h2').textContent = featured.homeTitle || featured.title;
+    hero.querySelector('p').textContent = featured.deck;
   }
 
-  document.querySelectorAll('.latest-editorial .story').forEach((card, index) => {
-    const article = news[index];
-    if (article) applyArticleCard(card, article);
-  });
+  const latestGrid = document.getElementById('latestGrid');
+  if (latestGrid) {
+    latestGrid.innerHTML = news.slice(0,5).map((article,index) => `
+      <a class="editorial-card ${index === 0 ? 'featured' : ''}" href="${articleUrl(article)}">
+        <div class="editorial-card-media" style="background-image:url("${article.image}")"></div>
+        <div class="editorial-card-body">
+          <span class="category">${article.category}</span>
+          <h3>${article.homeTitle || article.title}</h3>
+          <p>${article.deck}</p>
+          <div class="card-meta">${article.date} · ${article.read}</div>
+        </div>
+      </a>`).join('');
+  }
 
-  document.querySelectorAll('.recent-grid .story').forEach((card, index) => {
-    const article = news[(index + 4) % news.length];
-    if (article) applyArticleCard(card, article);
-  });
+  const radar = document.getElementById('radarList');
+  if (radar) {
+    radar.innerHTML = news.slice(5,9).map((article,index) => `
+      <a class="radar-item" href="${articleUrl(article)}">
+        <span class="num">0${index+1}</span>
+        <span class="radar-thumb" style="background-image:url("${article.image}")"></span>
+        <span><h3>${article.homeTitle || article.title}</h3><small>${article.category} · ${article.time}</small></span>
+        <span class="arrow">↗</span>
+      </a>`).join('');
+  }
 
-  document.querySelectorAll('.trend-compact > a').forEach((card, index) => {
-    const article = news[index + 1];
-    if (!article) return;
-    card.href = articleUrl(article);
-    const image = card.querySelector('.trend-mini');
-    const title = card.querySelector('strong');
-    const time = card.querySelector('small');
-    if (image) image.style.backgroundImage = `url("${article.image}")`;
-    if (title) title.textContent = article.homeTitle || article.title;
-    if (time) time.textContent = article.time;
-  });
+  const recent = document.getElementById('recentGrid');
+  if (recent) {
+    recent.innerHTML = news.slice(8).map(article => `
+      <a class="recent-card" href="${articleUrl(article)}">
+        <div class="recent-card-media" style="background-image:url("${article.image}")"></div>
+        <span class="category">${article.category}</span>
+        <h3>${article.homeTitle || article.title}</h3>
+        <p>${article.deck}</p>
+      </a>`).join('');
+  }
 
-  document.querySelectorAll('.ticker span').forEach((item, index) => {
-    const article = news[index % news.length];
-    if (!article) return;
-    item.innerHTML = `<b>${article.time.replace('HACE ', '')}</b> ${article.title}`;
-  });
+  const ticker = document.getElementById('ticker');
+  if (ticker) {
+    ticker.innerHTML = news.slice(0,6).map(article => `<span><b>${article.category}</b> ${article.title}</span>`).join('');
+  }
 }
 
 function renderArticlePage() {
@@ -526,5 +530,5 @@ initIconFeed();
 initIconLoopButton();
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js?v=8', { updateViaCache: 'none' }).then(registration => registration.update().catch(() => {})).catch(() => {}); });
+  window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js?v=9', { updateViaCache: 'none' }).then(registration => registration.update().catch(() => {})).catch(() => {}); });
 }
