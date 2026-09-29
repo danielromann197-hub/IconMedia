@@ -193,23 +193,23 @@ window.ICON_NEWS = [
   {
     slug: 'netflix-estrenos-septiembre-2026',
     category: 'SERIES',
-    title: 'Netflix llega al cierre de septiembre con nuevas series, anime y regresos',
-    homeTitle: 'Lo nuevo de Netflix para cerrar septiembre',
-    deck: 'Entre los estrenos del mes aparecen Stranger Things: Relatos del 85, Pokémon Horizontes y nuevas temporadas de varias series.',
+    title: 'Netflix anuncia 15 nuevas producciones mexicanas para los próximos meses',
+    homeTitle: 'Netflix prepara 15 nuevas historias mexicanas',
+    deck: 'La plataforma anunció series, películas, documentales y reality shows como parte de sus 15 años en México.',
     body: [
-      'Septiembre está cerrando con una nueva tanda de estrenos en Netflix y hay opciones para prácticamente todos los feeds.',
-      'Entre los títulos que llegaron este mes están Stranger Things: Relatos del 85, Pokémon Horizontes, temporada 3 parte 4, además de nuevas temporadas y producciones originales.',
-      'Netflix también programó para finales de septiembre títulos como Minerva Academy, Un mundo diferente, El problema final, STEEL BALL RUN JoJo’s Bizarre Adventure y LEGO One Piece.',
-      'La plataforma concentra varios lanzamientos hacia la segunda mitad del mes, justo cuando las conversaciones de series y anime suelen comenzar a dominar redes sociales.',
-      'Como siempre, el estreno no termina cuando aparece el capítulo: teorías, clips, memes y reacciones pueden convertir una serie en fenómeno mucho después de su lanzamiento.'
+      'Netflix anunció 15 nuevas producciones mexicanas que llegarán durante los próximos meses, entre series, películas, documentales y reality shows.',
+      'El anuncio forma parte de la celebración por los 15 años de Netflix en México. La compañía informó que ha producido o coproducido más de 200 títulos en el país entre 2016 y 2025.',
+      'Entre los proyectos aparecen Contra el huracán, Contraataque, El enemigo del pueblo, Dogman, Rosario Tijeras: temporada 6, Canelo Álvarez y Habilidad física 100: México.',
+      'La lista también incluye documentales como El invencible verano de Liliana, Marcos: Otro mundo posible y Keiko, además de nuevas series y formatos sin guion.',
+      'La noticia cuenta algo más que una agenda de estrenos: muestra cuánto ha crecido la producción local dentro del streaming y la apuesta de Netflix por nuevas historias hechas en México.'
     ],
     image: 'https://images.ctfassets.net/4cd45et68cgf/4xQr3tLtT5fZuwfTggU0yj/c8c40bcdbe1b9c2792cd381c7abf5c67/15_SLATE__1_.png?w=2000',
     time: 'HOY',
-    date: '24 SEPT 2026',
+    date: '10 SEPT 2026',
     read: '3 MIN DE LECTURA',
     author: 'Redacción ICON',
-    source: 'Netflix Tudum / Cinco Días',
-    sourceUrl: 'https://www.netflix.com/tudum/articles/new-on-netflix'
+    source: 'About Netflix México',
+    sourceUrl: 'https://about.netflix.com/es/news/netflix-celebra-su-aniversario-15-en-mexico'
   },
   {
     slug: 'youtube-fandom-creadores-2026',
