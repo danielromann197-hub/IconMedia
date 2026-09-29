@@ -119,7 +119,7 @@ window.ICON_NEWS = [
       'Para los creadores, el cambio puede ser especialmente interesante porque una conversación que antes terminaba en comentarios ahora puede convertirse en una nueva pieza de contenido.',
       'La tendencia apunta a algo más grande: las redes están intentando que los usuarios no solamente consuman un video, sino que participen activamente en lo que ocurre alrededor de él.'
     ],
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=2400&q=95',
+    image: 'https://imgproxy.divecdn.com/zjlVBLW-f7b2CHtUKhNgt4T22_5zu3eRNIYS9Niv2Yc/g%3Ace/rs%3Afit%3A1600%3A0/Z3M6Ly9kaXZlc2l0ZS1zdG9yYWdlL2RpdmVpbWFnZS90aWt0b2tfY29udmVyc2F0aW9uczEucG5n.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -140,7 +140,7 @@ window.ICON_NEWS = [
       'La apuesta refleja cómo la recomendación de libros en redes dejó de ser un nicho para convertirse en una parte visible de la conversación cultural digital.',
       'Para ICON, hay una lectura interesante: internet no solamente está creando nuevas estrellas; también está cambiando la manera en que descubrimos libros, música, videojuegos y otras formas de cultura.'
     ],
-    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=2400&q=95',
+    image: 'https://imagenes.elpais.com/resizer/v2/WSPFX4EEYFAA5FJMLXNL5XDJWA.jpg?auth=3e49277af4956c53f89246a61c57ca6adbf4a1034fbf620d36d57c410627cef0&width=1960',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -182,7 +182,7 @@ window.ICON_NEWS = [
       'Más allá de las cifras, el fenómeno explica por qué cada vez más negocios producen contenido pensando como creadores: un video puede funcionar al mismo tiempo como recomendación, escaparate y punto de descubrimiento.',
       'Para los creadores, esto también abre otra oportunidad: contar historias sobre lugares y productos puede tener un impacto que va mucho más allá de conseguir reproducciones.'
     ],
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2400&q=95',
+    image: 'https://www.elgrafico.mx/resizer/v2/PG4K67H4TZCSNJKH73UMIBUSJE.jpg?auth=6d1219ad293f20a6c29a5ea7dc6591acfad289a5dd7f10db5483e5be41a3f5a4',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -203,7 +203,7 @@ window.ICON_NEWS = [
       'La plataforma concentra varios lanzamientos hacia la segunda mitad del mes, justo cuando las conversaciones de series y anime suelen comenzar a dominar redes sociales.',
       'Como siempre, el estreno no termina cuando aparece el capítulo: teorías, clips, memes y reacciones pueden convertir una serie en fenómeno mucho después de su lanzamiento.'
     ],
-    image: 'https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQdLRY5qmSdXEz0MQIMpdvK53GILUyWfkByG2CNxxjtOCuBmsqGmnLx2FHRjh9mRLHPcQK2DKA8_kdiBrFeSiU04-pTJVcYKh-OJg_r8B4K9F-8fS37KnVFOYm0i050hfCIUMS3hQLn5TvUn5RFjzPG7AKpo.jpg?r=dc6',
+    image: 'https://images.ctfassets.net/4cd45et68cgf/4xQr3tLtT5fZuwfTggU0yj/c8c40bcdbe1b9c2792cd381c7abf5c67/15_SLATE__1_.png?w=2000',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
@@ -224,7 +224,7 @@ window.ICON_NEWS = [
       'La apuesta tiene una lógica clara: el creador ya no es solamente alguien que publica videos. Para muchas audiencias, también es el centro de una comunidad, un fandom y hasta una marca.',
       'El reto será conseguir que todas estas funciones sumen a la experiencia sin hacer que cada canal termine pareciendo una aplicación diferente dentro de YouTube.'
     ],
-    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YTM_blog_post_Badges.max-100x3000.format-webp.webp',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Fandom_-_Live_Bundle_-_Live_sho.max-100x100.format-webp.webp',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
