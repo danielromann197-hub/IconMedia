@@ -43,7 +43,7 @@ function renderHome() {
   if (latestGrid) {
     latestGrid.innerHTML = news.slice(0,5).map((article,index) => `
       <a class="editorial-card ${index === 0 ? 'featured' : ''}" href="${articleUrl(article)}">
-        <div class="editorial-card-media" style="background-image:url("${article.image}")"></div>
+        <div class="editorial-card-media" style="background-image:url('${article.image}')"></div>
         <div class="editorial-card-body">
           <span class="category">${article.category}</span>
           <h3>${article.homeTitle || article.title}</h3>
@@ -58,7 +58,7 @@ function renderHome() {
     radar.innerHTML = news.slice(5,9).map((article,index) => `
       <a class="radar-item" href="${articleUrl(article)}">
         <span class="num">0${index+1}</span>
-        <span class="radar-thumb" style="background-image:url("${article.image}")"></span>
+        <span class="radar-thumb" style="background-image:url('${article.image}')"></span>
         <span><h3>${article.homeTitle || article.title}</h3><small>${article.category} · ${article.time}</small></span>
         <span class="arrow">↗</span>
       </a>`).join('');
@@ -68,7 +68,7 @@ function renderHome() {
   if (recent) {
     recent.innerHTML = news.slice(8).map(article => `
       <a class="recent-card" href="${articleUrl(article)}">
-        <div class="recent-card-media" style="background-image:url("${article.image}")"></div>
+        <div class="recent-card-media" style="background-image:url('${article.image}')"></div>
         <span class="category">${article.category}</span>
         <h3>${article.homeTitle || article.title}</h3>
         <p>${article.deck}</p>
@@ -234,7 +234,7 @@ function renderCategoryPage() {
     const card = document.createElement('a');
     card.className = 'category-story';
     card.href = articleUrl(article);
-    card.innerHTML = `<div class="category-story-image" style="background-image:url("${article.image}")"><span>${article.category}</span></div><div><small>${article.date} · ${article.read}</small><h3>${article.title}</h3><p>${article.deck}</p></div><strong>↗</strong>`;
+    card.innerHTML = `<div class="category-story-image" style="background-image:url('${article.image}')"><span>${article.category}</span></div><div><small>${article.date} · ${article.read}</small><h3>${article.title}</h3><p>${article.deck}</p></div><strong>↗</strong>`;
     result.appendChild(card);
   });
 }
