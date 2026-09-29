@@ -136,7 +136,7 @@ window.ICON_NEWS = [
     body: [
       'TikTok y la Feria Internacional del Libro de Guadalajara anunciaron la primera edición mexicana de los TikTok Book Awards, una iniciativa que lleva la conversación de BookTok al terreno de los reconocimientos culturales.',
       'México se convierte en el primer país de habla hispana en albergar estos premios. La convocatoria contempla categorías para librerías o editoriales independientes, creadores de contenido literario y libros de narrativa gráfica.',
-      'La comunidad puede participar en las nominaciones durante septiembre. Los proyectos ganadores serán celebrados el 3 de diciembre de 2026 en Guadalajara.',
+      'La etapa de nominaciones ya cerró. TikTok y la FIL Guadalajara anunciaron que los ganadores serán celebrados el 3 de diciembre de 2026 en Guadalajara, durante la edición 40 de la Feria.',
       'La apuesta refleja cómo la recomendación de libros en redes dejó de ser un nicho para convertirse en una parte visible de la conversación cultural digital.',
       'Para ICON, hay una lectura interesante: internet no solamente está creando nuevas estrellas; también está cambiando la manera en que descubrimos libros, música, videojuegos y otras formas de cultura.'
     ],
