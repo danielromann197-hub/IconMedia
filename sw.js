@@ -6,6 +6,7 @@ const APP_SHELL = [
   '/home-polish.css',
   '/home-fix.css',
   '/home-editorial.css',
+  '/redesign.css',
   '/script.js',
   '/news-data.js',
   '/categorias.html',
