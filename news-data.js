@@ -124,8 +124,8 @@ window.ICON_NEWS = [
     date: '3 SEPT 2026',
     read: '3 MIN DE LECTURA',
     author: 'Redacción ICON',
-    source: 'TechCrunch',
-    sourceUrl: 'https://techcrunch.com/2026/09/03/tiktok-comments-are-getting-more-interactive-with-voice-comments-polls-and-more/'
+    source: 'TikTok Newsroom',
+    sourceUrl: 'https://newsroom.tiktok.com/tiktok-comentarios-voz-encuestas-carruseles-fotos?lang=es-419'
   },
   {
     slug: 'tiktok-book-awards-mexico',
