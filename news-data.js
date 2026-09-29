@@ -224,7 +224,7 @@ window.ICON_NEWS = [
       'La apuesta tiene una lógica clara: el creador ya no es solamente alguien que publica videos. Para muchas audiencias, también es el centro de una comunidad, un fandom y hasta una marca.',
       'El reto será conseguir que todas estas funciones sumen a la experiencia sin hacer que cada canal termine pareciendo una aplicación diferente dentro de YouTube.'
     ],
-    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Fandom_-_Live_Bundle_-_Live_sho.max-100x100.format-webp.webp',
+    image: 'https://storage.googleapis.com/gweb-uniblog-publish-prod/images/MadeOnYoutube_Social.width-1300.png',
     time: 'HOY',
     date: '24 SEPT 2026',
     read: '3 MIN DE LECTURA',
